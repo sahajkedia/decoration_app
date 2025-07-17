@@ -7,9 +7,9 @@
 			content="width=device-width, initial-scale=1.0" />
 		<meta
 			name="description"
-			content="Transform your celebrations with India's most trusted premium decoration service. 2000+ happy families, same-day setup, lifetime memories guaranteed." />
+			content="Noida & Delhi's #1 Balloon Decoration Service. Birthday, Anniversary, Baby Shower, Corporate, Custom Arches & Bouquets. Same-day setup, 1000+ happy clients." />
 		<title>
-			DreamScape Decorations - Premium Event Decoration Services | Book Today
+			Balloon Decoration Noida - #1 Balloon Decorators in Noida & Delhi
 		</title>
 		<link
 			href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
@@ -309,7 +309,7 @@
 
 			.hero-visual {
 				position: relative;
-				height: 500px;
+				height: 600px;
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -318,32 +318,48 @@
 			.hero-gallery {
 				display: grid;
 				grid-template-columns: repeat(3, 1fr);
-				gap: 1rem;
-				transform: rotate(-5deg);
-				transition: transform 0.3s ease;
-			}
-
-			.hero-gallery:hover {
-				transform: rotate(0deg);
+				gap: 2rem;
+				transform: none;
 			}
 
 			.hero-gallery-item {
-				width: 120px;
-				height: 160px;
-				border-radius: 15px;
+				width: 220px;
+				height: 320px;
+				border-radius: 25px;
 				overflow: hidden;
-				box-shadow: var(--shadow-soft);
+				box-shadow: var(--shadow-strong);
 				transition: transform 0.3s ease;
-			}
-
-			.hero-gallery-item:hover {
-				transform: scale(1.05);
 			}
 
 			.hero-gallery-item img {
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
+			}
+
+			@media (max-width: 900px) {
+				.hero-gallery {
+					gap: 1rem;
+				}
+				.hero-gallery-item {
+					width: 140px;
+					height: 200px;
+				}
+			}
+
+			@media (max-width: 600px) {
+				.hero-visual {
+					height: auto;
+				}
+				.hero-gallery {
+					grid-template-columns: 1fr 1fr;
+					gap: 0.7rem;
+				}
+				.hero-gallery-item {
+					width: 100%;
+					height: 160px;
+					border-radius: 15px;
+				}
 			}
 
 			/* Floating Elements */
@@ -627,15 +643,15 @@
 
 			.services-grid {
 				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-				gap: 2rem;
+				grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+				gap: 2.5rem;
 			}
 
 			.service-card {
 				background: white;
-				border-radius: 20px;
-				overflow: hidden;
-				box-shadow: var(--shadow-soft);
+				border-radius: 25px;
+				box-shadow: var(--shadow-strong);
+				border: 1.5px solid rgba(212, 175, 55, 0.15);
 				transition: all 0.3s ease;
 				position: relative;
 				border: 1px solid rgba(212, 175, 55, 0.1);
@@ -657,8 +673,8 @@
 			}
 
 			.service-image {
-				position: relative;
-				height: 200px;
+				height: 260px;
+				border-radius: 25px 25px 0 0;
 				overflow: hidden;
 			}
 
@@ -1496,6 +1512,191 @@
 					display: none !important;
 				}
 			}
+
+			.hamburger {
+				display: none;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				width: 40px;
+				height: 40px;
+				cursor: pointer;
+				z-index: 1100;
+			}
+			.hamburger span {
+				display: block;
+				width: 28px;
+				height: 4px;
+				margin: 4px 0;
+				background: var(--primary-gold);
+				border-radius: 2px;
+				transition: 0.3s;
+			}
+			@media (max-width: 900px) {
+				.hamburger {
+					display: flex;
+				}
+				.nav-cta.nav-menu {
+					position: fixed;
+					top: 70px;
+					right: 0;
+					left: 0;
+					background: var(--primary-royal);
+					flex-direction: column;
+					align-items: center;
+					gap: 1.5rem;
+					padding: 2rem 0 2rem 0;
+					box-shadow: var(--shadow-strong);
+					z-index: 1001;
+					transform: translateY(-120%);
+					opacity: 0;
+					pointer-events: none;
+					transition: all 0.3s;
+				}
+				.nav-cta.nav-menu.active {
+					transform: translateY(0);
+					opacity: 1;
+					pointer-events: auto;
+				}
+			}
+			@media (max-width: 900px) {
+				.nav-container {
+					flex-direction: row;
+					gap: 0;
+				}
+			}
+			@media (max-width: 600px) {
+				.nav-cta.nav-menu {
+					top: 56px;
+					padding: 1.2rem 0;
+				}
+			}
+			/* Hamburger active animation */
+			.hamburger.active span:nth-child(1) {
+				transform: translateY(8px) rotate(45deg);
+			}
+			.hamburger.active span:nth-child(2) {
+				opacity: 0;
+			}
+			.hamburger.active span:nth-child(3) {
+				transform: translateY(-8px) rotate(-45deg);
+			}
+			/* ... existing code ... */
+			/* CTA BUTTONS IN FEATURED AD */
+			@media (max-width: 900px) {
+				.scarcity .hero-cta {
+					flex-direction: column;
+					align-items: center;
+					gap: 1rem;
+					margin-top: 1.5rem;
+				}
+				.scarcity .btn-primary,
+				.scarcity .btn-secondary {
+					width: 100%;
+					max-width: 320px;
+					font-size: 1.1rem;
+					padding: 1.2rem 0;
+					margin: 0 auto;
+					display: block;
+				}
+			}
+			@media (max-width: 600px) {
+				.scarcity .hero-cta {
+					gap: 0.7rem;
+				}
+				.scarcity .btn-primary,
+				.scarcity .btn-secondary {
+					font-size: 1rem;
+					padding: 1rem 0;
+					max-width: 95vw;
+				}
+			}
+			/* NAV MENU POLISH */
+			.nav-cta.nav-menu a {
+				color: white;
+				font-size: 1.3rem;
+				font-weight: 600;
+				text-decoration: none;
+				margin: 0.7rem 0;
+				padding: 0.7rem 2rem;
+				border-radius: 10px;
+				transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+				display: block;
+				text-align: center;
+			}
+			.nav-cta.nav-menu a:hover,
+			.nav-cta.nav-menu a:focus {
+				background: var(--primary-gold);
+				color: var(--primary-deep);
+				box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+			}
+			@media (max-width: 900px) {
+				.nav-cta.nav-menu {
+					position: fixed;
+					top: 0;
+					left: 0;
+					right: 0;
+					height: 100vh;
+					background: rgba(26, 26, 46, 0.98);
+					flex-direction: column;
+					align-items: center;
+					gap: 1.5rem;
+					padding: 120px 0 2rem 0;
+					box-shadow: var(--shadow-strong);
+					z-index: 1001;
+					transform: translateY(-120%);
+					opacity: 0;
+					pointer-events: none;
+					transition: transform 0.35s cubic-bezier(0.77, 0, 0.18, 1),
+						opacity 0.25s;
+				}
+				.nav-cta.nav-menu.active {
+					transform: translateY(0);
+					opacity: 1;
+					pointer-events: auto;
+				}
+				/* Overlay for menu */
+				.nav-overlay {
+					display: none;
+					position: fixed;
+					top: 0;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					background: rgba(0, 0, 0, 0.45);
+					z-index: 1000;
+					opacity: 0;
+					transition: opacity 0.25s;
+				}
+				.nav-overlay.active {
+					display: block;
+					opacity: 1;
+				}
+			}
+			@media (min-width: 901px) {
+				.nav-cta.nav-menu {
+					position: static;
+					flex-direction: row;
+					align-items: center;
+					gap: 1rem;
+					background: none;
+					height: auto;
+					padding: 0;
+					box-shadow: none;
+					transform: none;
+					opacity: 1;
+					pointer-events: auto;
+				}
+				.nav-cta.nav-menu a {
+					font-size: 1.05rem;
+					margin: 0 0.2rem;
+					padding: 0.5rem 1.1rem;
+					border-radius: 7px;
+					color: white;
+					background: none;
+					box-shadow: none;
+				}
+			}
 		</style>
 	</head>
 	<body>
@@ -1526,23 +1727,41 @@
 					<a
 						href="#"
 						class="logo"
-						>DreamScape</a
+						>Balloon Decoration Noida</a
 					>
-					<div class="nav-cta">
+					<div
+						class="hamburger"
+						id="hamburger-menu"
+						aria-label="Open navigation"
+						tabindex="0">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+					<div
+						class="nav-cta nav-menu"
+						id="nav-menu">
+						<a href="#services">Services</a>
+						<a href="#gallery">Gallery</a>
+						<a href="#testimonials">Reviews</a>
+						<a href="#contact">Contact</a>
 						<a
 							href="tel:+917627057190"
-							class="nav-phone">
-							<i class="fas fa-phone"></i> +91 76270 57190
-						</a>
+							class="nav-phone"
+							><i class="fas fa-phone"></i> +91 76270 57190</a
+						>
 						<a
 							href="https://wa.me/917627057190"
-							class="nav-whatsapp">
-							<i class="fab fa-whatsapp"></i> Get Free Quote
-						</a>
+							class="nav-whatsapp"
+							><i class="fab fa-whatsapp"></i> Get Free Quote</a
+						>
 					</div>
 				</div>
 			</div>
 		</nav>
+		<div
+			class="nav-overlay"
+			id="nav-overlay"></div>
 
 		<!-- Hero Section -->
 		<section class="hero">
@@ -1556,15 +1775,18 @@
 					<div class="hero-text">
 						<div class="urgency-badge">
 							<i class="fas fa-fire"></i>
-							<span>LIMITED TIME: 30% OFF This Week Only!</span>
+							<span
+								>LIMITED TIME: 30% OFF Balloon Decoration in Noida &
+								Delhi!</span
+							>
 						</div>
 						<h1 class="hero-headline">
-							Transform Your <span class="highlight">Celebrations</span> Into
-							Magical Memories
+							Noida & Delhi's
+							<span class="highlight">#1 Balloon Decoration</span> Service
 						</h1>
 						<p class="hero-subheadline">
-							India's most trusted premium decoration service with 2000+ happy
-							families. Same-day setup, lifetime memories guaranteed.
+							Trusted by 1000+ families for birthdays, anniversaries, baby
+							showers, and more. Same-day setup, premium quality guaranteed.
 						</p>
 						<div class="trust-indicators">
 							<div class="trust-item">
@@ -1573,7 +1795,7 @@
 							</div>
 							<div class="trust-item">
 								<i class="fas fa-users"></i>
-								<span>2000+ Families</span>
+								<span>1000+ Happy Clients</span>
 							</div>
 							<div class="trust-item">
 								<i class="fas fa-clock"></i>
@@ -1594,7 +1816,7 @@
 						</div>
 						<div class="social-proof">
 							<i class="fas fa-check-circle"></i>
-							<span>Sarah M. from Delhi just booked 2 minutes ago</span>
+							<span>Someone from Noida just booked 2 minutes ago</span>
 						</div>
 					</div>
 					<div class="hero-visual">
@@ -1602,32 +1824,32 @@
 							<div class="hero-gallery-item">
 								<img
 									src="images/WhatsApp Image 2025-07-15 at 20.42.13 (3).jpeg"
-									alt="Premium Birthday Decoration" />
+									alt="Balloon Birthday Decoration Noida" />
 							</div>
 							<div class="hero-gallery-item">
 								<img
 									src="images/WhatsApp Image 2025-07-15 at 20.42.13 (2).jpeg"
-									alt="Wedding Decoration" />
+									alt="Balloon Wedding Decoration Noida" />
 							</div>
 							<div class="hero-gallery-item">
 								<img
 									src="images/WhatsApp Image 2025-07-15 at 20.42.13 (1).jpeg"
-									alt="Corporate Event" />
+									alt="Balloon Corporate Event Noida" />
 							</div>
 							<div class="hero-gallery-item">
 								<img
 									src="images/WhatsApp Image 2025-07-15 at 20.42.13.jpeg"
-									alt="Baby Shower" />
+									alt="Balloon Baby Shower Noida" />
 							</div>
 							<div class="hero-gallery-item">
 								<img
 									src="images/WhatsApp Image 2025-07-15 at 20.42.12 (2).jpeg"
-									alt="Engagement" />
+									alt="Balloon Engagement Noida" />
 							</div>
 							<div class="hero-gallery-item">
 								<img
 									src="images/WhatsApp Image 2025-07-15 at 20.42.12 (1).jpeg"
-									alt="Anniversary" />
+									alt="Balloon Anniversary Noida" />
 							</div>
 						</div>
 					</div>
@@ -1641,7 +1863,8 @@
 				<div class="authority-content">
 					<div class="authority-text">
 						<h3>
-							Why 2000+ Families Choose DreamScape as Their Trusted Partner
+							Why 1000+ Families Choose Balloon Decoration Noida as Their
+							Trusted Partner
 						</h3>
 						<p>
 							For over 5 years, we've been transforming ordinary spaces into
@@ -1690,9 +1913,9 @@
 					</div>
 					<div class="stats-grid">
 						<div class="stat-card">
-							<div class="stat-number">2000+</div>
+							<div class="stat-number">1000+</div>
 							<div class="stat-label">Happy Families</div>
-							<div class="stat-sublabel">Across India</div>
+							<div class="stat-sublabel">Across Noida & Delhi</div>
 						</div>
 						<div class="stat-card">
 							<div class="stat-number">4.9</div>
@@ -1715,17 +1938,20 @@
 				<div class="scarcity-content">
 					<div class="scarcity-badge">
 						<i class="fas fa-fire"></i>
-						<span>FLASH SALE - Limited Time Only!</span>
+						<span
+							>FLASH SALE - 30% OFF Balloon Decoration in Noida & Delhi!</span
+						>
 					</div>
 					<h2
 						class="section-title"
 						style="color: white; font-size: 2.5rem; margin-bottom: 1rem">
-						Get 30% OFF Your Dream Decoration
+						Get 30% OFF Your Dream Balloon Decoration
 					</h2>
 					<p
 						class="section-subtitle"
 						style="color: rgba(255, 255, 255, 0.9); margin-bottom: 2rem">
-						Only 15 bookings left this week at this special price!
+						Only a few slots left this week in Noida & Delhi. Book now for
+						birthdays, anniversaries, baby showers, and more!
 					</p>
 					<div class="scarcity-timer">
 						<div class="timer-item">
@@ -1765,7 +1991,12 @@
 						<a
 							href="tel:+917627057190"
 							class="btn-primary">
-							<i class="fas fa-phone"></i> Claim Your 30% Discount Now
+							<i class="fas fa-phone"></i> Call Now - Book Your Slot
+						</a>
+						<a
+							href="https://wa.me/917627057190"
+							class="btn-secondary">
+							<i class="fab fa-whatsapp"></i> WhatsApp Us
 						</a>
 					</div>
 				</div>
@@ -1773,14 +2004,16 @@
 		</section>
 
 		<!-- Services Section -->
-		<section class="services section">
+		<section
+			class="services section"
+			id="services">
 			<div class="container">
 				<div class="section-header">
-					<div class="section-pretitle">Premium Services</div>
-					<h2 class="section-title">Every Celebration Deserves Magic</h2>
+					<div class="section-pretitle">Our Balloon Decoration Services</div>
+					<h2 class="section-title">All Occasions, All Styles</h2>
 					<p class="section-subtitle">
-						From intimate gatherings to grand celebrations, we create
-						experiences that touch hearts and create lasting memories.
+						We offer the widest range of balloon decoration services in Noida &
+						Delhi. Choose from our popular packages or request a custom design!
 					</p>
 				</div>
 				<div class="services-grid">
@@ -1788,24 +2021,87 @@
 						<div class="service-image">
 							<img
 								src="images/WhatsApp Image 2025-07-15 at 20.42.13 (3).jpeg"
-								alt="Premium Birthday Decoration" />
-							<div class="service-badge">Most Popular</div>
+								alt="Birthday Balloon Decoration" />
+							<div class="service-badge">Birthday</div>
 						</div>
 						<div class="service-content">
-							<h3 class="service-title">Premium Birthday Celebrations</h3>
+							<h3 class="service-title">Birthday Balloon Decoration</h3>
 							<p class="service-description">
-								Transform birthdays into unforgettable milestones with our
-								signature decorations that make every age feel special.
+								Theme-based, cartoon, milestone, and surprise birthday balloon
+								decor for all ages.
 							</p>
 							<ul class="service-features">
-								<li><i class="fas fa-check"></i> Custom theme designs</li>
+								<li><i class="fas fa-check"></i> Custom themes & backdrops</li>
+								<li><i class="fas fa-check"></i> Premium balloon bouquets</li>
+								<li><i class="fas fa-check"></i> Same-day setup</li>
+							</ul>
+							<div class="service-cta">
+								<a
+									href="tel:+917627057190"
+									class="btn-service btn-service-primary">
+									<i class="fas fa-phone"></i> Book Now
+								</a>
+								<a
+									href="https://wa.me/917627057190"
+									class="btn-service btn-service-secondary">
+									<i class="fab fa-whatsapp"></i> Get Quote
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="service-card">
+						<div class="service-image">
+							<img
+								src="images/WhatsApp Image 2025-07-15 at 20.42.12 (1).jpeg"
+								alt="Anniversary Balloon Decoration" />
+							<div class="service-badge">Anniversary</div>
+						</div>
+						<div class="service-content">
+							<h3 class="service-title">Anniversary Balloon Decoration</h3>
+							<p class="service-description">
+								Romantic and elegant balloon decor for anniversaries and special
+								milestones.
+							</p>
+							<ul class="service-features">
+								<li><i class="fas fa-check"></i> Heart-shaped arches</li>
+								<li><i class="fas fa-check"></i> Rose & gold themes</li>
+								<li><i class="fas fa-check"></i> Room & hall decoration</li>
+							</ul>
+							<div class="service-cta">
+								<a
+									href="tel:+917627057190"
+									class="btn-service btn-service-primary">
+									<i class="fas fa-phone"></i> Book Now
+								</a>
+								<a
+									href="https://wa.me/917627057190"
+									class="btn-service btn-service-secondary">
+									<i class="fab fa-whatsapp"></i> Get Quote
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="service-card">
+						<div class="service-image">
+							<img
+								src="images/WhatsApp Image 2025-07-15 at 20.42.13.jpeg"
+								alt="Baby Shower Balloon Decoration" />
+							<div class="service-badge">Baby Shower</div>
+						</div>
+						<div class="service-content">
+							<h3 class="service-title">Baby Shower Balloon Decoration</h3>
+							<p class="service-description">
+								Celebrate new beginnings with pastel, gender reveal, and custom
+								baby shower balloon decor.
+							</p>
+							<ul class="service-features">
 								<li>
-									<i class="fas fa-check"></i> Premium balloon arrangements
+									<i class="fas fa-check"></i> Pastel & custom color themes
 								</li>
-								<li>
-									<i class="fas fa-check"></i> Professional photo backdrop
-								</li>
-								<li><i class="fas fa-check"></i> Same-day setup available</li>
+								<li><i class="fas fa-check"></i> Welcome baby arches</li>
+								<li><i class="fas fa-check"></i> Photo backdrops</li>
 							</ul>
 							<div class="service-cta">
 								<a
@@ -1826,22 +2122,19 @@
 						<div class="service-image">
 							<img
 								src="images/WhatsApp Image 2025-07-15 at 20.42.12 (2).jpeg"
-								alt="Wedding Decoration" />
-							<div class="service-badge">Premium</div>
+								alt="Corporate Balloon Decoration" />
+							<div class="service-badge">Corporate</div>
 						</div>
 						<div class="service-content">
-							<h3 class="service-title">Magical Wedding Decorations</h3>
+							<h3 class="service-title">Corporate Event Balloon Decoration</h3>
 							<p class="service-description">
-								Your dream wedding deserves our premium touch. Let us create the
-								perfect romantic atmosphere for your special day.
+								Professional balloon decor for office parties, product launches,
+								and business events in Noida & Delhi.
 							</p>
 							<ul class="service-features">
-								<li>
-									<i class="fas fa-check"></i> Elegant floral arrangements
-								</li>
-								<li><i class="fas fa-check"></i> Premium lighting setup</li>
-								<li><i class="fas fa-check"></i> Custom color schemes</li>
-								<li><i class="fas fa-check"></i> Professional coordination</li>
+								<li><i class="fas fa-check"></i> Brand color themes</li>
+								<li><i class="fas fa-check"></i> Logo balloon arches</li>
+								<li><i class="fas fa-check"></i> Stage & entrance decor</li>
 							</ul>
 							<div class="service-cta">
 								<a
@@ -1862,20 +2155,52 @@
 						<div class="service-image">
 							<img
 								src="images/WhatsApp Image 2025-07-15 at 20.42.13 (2).jpeg"
-								alt="Corporate Events" />
-							<div class="service-badge">Professional</div>
+								alt="Theme Party Balloon Decoration" />
+							<div class="service-badge">Theme Party</div>
 						</div>
 						<div class="service-content">
-							<h3 class="service-title">Corporate Event Excellence</h3>
+							<h3 class="service-title">Theme Party Balloon Decoration</h3>
 							<p class="service-description">
-								Elevate your corporate events with professional decorations that
-								reflect your brand's success and vision.
+								From superheroes to princesses, we create magical theme party
+								balloon setups for kids and adults.
 							</p>
 							<ul class="service-features">
-								<li><i class="fas fa-check"></i> Brand-aligned themes</li>
-								<li><i class="fas fa-check"></i> Professional presentation</li>
-								<li><i class="fas fa-check"></i> Flexible timing options</li>
-								<li><i class="fas fa-check"></i> Corporate invoicing</li>
+								<li><i class="fas fa-check"></i> Cartoon & movie themes</li>
+								<li><i class="fas fa-check"></i> Custom props & cutouts</li>
+								<li><i class="fas fa-check"></i> Themed balloon arches</li>
+							</ul>
+							<div class="service-cta">
+								<a
+									href="tel:+917627057190"
+									class="btn-service btn-service-primary">
+									<i class="fas fa-phone"></i> Book Now
+								</a>
+								<a
+									href="https://wa.me/917627057190"
+									class="btn-service btn-service-secondary">
+									<i class="fab fa-whatsapp"></i> Get Quote
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="service-card">
+						<div class="service-image">
+							<img
+								src="images/WhatsApp Image 2025-07-15 at 20.42.12.jpeg"
+								alt="Custom Balloon Arches" />
+							<div class="service-badge">Custom Arches</div>
+						</div>
+						<div class="service-content">
+							<h3 class="service-title">Custom Balloon Arches & Bouquets</h3>
+							<p class="service-description">
+								Unique balloon arches, garlands, and bouquets for any event or
+								surprise delivery in Noida & Delhi.
+							</p>
+							<ul class="service-features">
+								<li><i class="fas fa-check"></i> Organic & spiral arches</li>
+								<li><i class="fas fa-check"></i> Balloon bouquets delivery</li>
+								<li><i class="fas fa-check"></i> Custom color combos</li>
 							</ul>
 							<div class="service-cta">
 								<a
@@ -1900,10 +2225,10 @@
 			<div class="container">
 				<div class="section-header">
 					<div class="section-pretitle">Customer Love</div>
-					<h2 class="section-title">2000+ Families Can't Be Wrong</h2>
+					<h2 class="section-title">1000+ Families Can't Be Wrong</h2>
 					<p class="section-subtitle">
-						See why families across India trust DreamScape for their most
-						important celebrations.
+						See why families across Noida & Delhi trust Balloon Decoration Noida
+						for their most important celebrations.
 					</p>
 				</div>
 				<div class="testimonials-grid">
@@ -1916,15 +2241,15 @@
 							<i class="fas fa-star"></i>
 						</div>
 						<p class="testimonial-text">
-							"DreamScape turned my daughter's 5th birthday into a fairy tale!
-							The attention to detail was incredible, and the setup was
-							completed exactly on time. Worth every penny!"
+							"Balloon Decoration Noida turned my daughter's 5th birthday into a
+							fairy tale! The attention to detail was incredible, and the setup
+							was completed exactly on time. Worth every penny!"
 						</p>
 						<div class="testimonial-author">
 							<div class="testimonial-avatar">P</div>
 							<div class="testimonial-info">
 								<h4>Priya Sharma</h4>
-								<p>Mumbai • Birthday Party</p>
+								<p>Noida • Birthday Party</p>
 							</div>
 						</div>
 					</div>
@@ -1968,7 +2293,7 @@
 							<div class="testimonial-avatar">A</div>
 							<div class="testimonial-info">
 								<h4>Amit Gupta</h4>
-								<p>Bangalore • Anniversary</p>
+								<p>Noidaß • Anniversary</p>
 							</div>
 						</div>
 					</div>
@@ -2119,7 +2444,7 @@
 				<div class="final-cta-content">
 					<h2 class="final-cta-title">Ready to Create Your Magic?</h2>
 					<p class="final-cta-subtitle">
-						Don't let your special moment be ordinary. Join 2000+ families who
+						Don't let your special moment be ordinary. Join 1000+ families who
 						made their celebrations extraordinary.
 					</p>
 					<div class="final-cta-buttons">
@@ -2151,10 +2476,10 @@
 			<div class="container">
 				<div class="footer-content">
 					<div class="footer-section">
-						<h3>DreamScape Decorations</h3>
+						<h3>Balloon Decoration Noida</h3>
 						<p>
-							India's most trusted premium decoration service, creating magical
-							celebrations for over 2000 families.
+							Noida & Delhi's most trusted balloon decoration service, creating
+							magical celebrations for 1000+ families.
 						</p>
 						<div style="margin-top: 1rem">
 							<a
@@ -2173,23 +2498,25 @@
 					</div>
 					<div class="footer-section">
 						<h3>Services</h3>
-						<p><a href="#birthday">Birthday Decorations</a></p>
-						<p><a href="#wedding">Wedding Decorations</a></p>
-						<p><a href="#corporate">Corporate Events</a></p>
-						<p><a href="#baby">Baby Showers</a></p>
+						<p><a href="#services">Birthday Balloon Decoration</a></p>
+						<p><a href="#services">Anniversary Balloon Decoration</a></p>
+						<p><a href="#services">Baby Shower Balloon Decoration</a></p>
+						<p><a href="#services">Corporate Event Balloon Decoration</a></p>
+						<p><a href="#services">Theme Party Balloon Decoration</a></p>
+						<p><a href="#services">Custom Balloon Arches & Bouquets</a></p>
 					</div>
 					<div class="footer-section">
 						<h3>Contact Info</h3>
-						<p>📞 +91 76270 57190</p>
+						<p>+91 76270 57190</p>
 						<p>📱 WhatsApp: +91 76270 57190</p>
-						<p>📍 Noida, Delhi NCR</p>
+						<p>📍 Noida, Delhi</p>
 						<p>🕒 24/7 Available</p>
 					</div>
 				</div>
 				<div class="footer-bottom">
 					<p>
-						&copy; 2024 DreamScape Decorations. All rights reserved. | Making
-						dreams come true, one celebration at a time.
+						&copy; 2024 Balloon Decoration Noida. All rights reserved. | Making
+						celebrations magical in Noida & Delhi.
 					</p>
 				</div>
 			</div>
@@ -2235,7 +2562,7 @@
 				</div>
 				<div class="notification-text">
 					<h4>Someone just booked!</h4>
-					<p>Rahul from Mumbai - 2 min ago</p>
+					<p>Rahul from Noida - 2 min ago</p>
 				</div>
 				<button
 					class="notification-close"
@@ -2286,9 +2613,9 @@
 
 			// Social Proof Notifications
 			const notifications = [
-				{ name: "Priya from Mumbai", time: "2 min ago" },
+				{ name: "Priya from Noida", time: "2 min ago" },
 				{ name: "Rahul from Delhi", time: "5 min ago" },
-				{ name: "Neha from Bangalore", time: "8 min ago" },
+				{ name: "Neha from Noidaß", time: "8 min ago" },
 				{ name: "Amit from Noida", time: "12 min ago" },
 				{ name: "Sunita from Gurgaon", time: "15 min ago" },
 			];
@@ -2417,6 +2744,54 @@
 			imageUrls.forEach((url) => {
 				const img = new Image();
 				img.src = url;
+			});
+
+			document.addEventListener("DOMContentLoaded", function () {
+				const hamburger = document.getElementById("hamburger-menu");
+				const navMenu = document.getElementById("nav-menu");
+				const navOverlay = document.getElementById("nav-overlay");
+				// Toggle menu
+				hamburger.addEventListener("click", function (e) {
+					navMenu.classList.toggle("active");
+					hamburger.classList.toggle("active");
+					navOverlay.classList.toggle(
+						"active",
+						navMenu.classList.contains("active")
+					);
+					document.body.style.overflow = navMenu.classList.contains("active")
+						? "hidden"
+						: "";
+					e.stopPropagation();
+				});
+				// Close menu on link click
+				navMenu.querySelectorAll("a").forEach((link) => {
+					link.addEventListener("click", function () {
+						navMenu.classList.remove("active");
+						hamburger.classList.remove("active");
+						navOverlay.classList.remove("active");
+						document.body.style.overflow = "";
+					});
+				});
+				// Close menu on overlay click
+				navOverlay.addEventListener("click", function () {
+					navMenu.classList.remove("active");
+					hamburger.classList.remove("active");
+					navOverlay.classList.remove("active");
+					document.body.style.overflow = "";
+				});
+				// Close menu on outside click
+				document.addEventListener("click", function (e) {
+					if (
+						!navMenu.contains(e.target) &&
+						!hamburger.contains(e.target) &&
+						navMenu.classList.contains("active")
+					) {
+						navMenu.classList.remove("active");
+						hamburger.classList.remove("active");
+						navOverlay.classList.remove("active");
+						document.body.style.overflow = "";
+					}
+				});
 			});
 		</script>
 	</body>
