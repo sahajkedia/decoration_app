@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Baby Shower Garland Decoration | Balloon Decoration Noida</title>
+		<meta
+			name="description"
+			content="Beautiful baby shower garland decorations in Noida & Delhi. Pastel garlands, welcome baby themes, custom setups, and more!" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+			rel="stylesheet" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+		<style>
+			:root {
+				--primary-gold: #d4af37;
+				--primary-deep: #1a1a2e;
+				--primary-royal: #16213e;
+				--accent-rose: #ff6b8a;
+				--accent-lavender: #9b59b6;
+				--neutral-light: #f8f9fa;
+				--neutral-warm: #fff8f0;
+				--text-dark: #2c3e50;
+				--text-light: #6c757d;
+				--success-green: #27ae60;
+				--urgency-red: #e74c3c;
+				--shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.1);
+				--shadow-strong: 0 20px 60px rgba(0, 0, 0, 0.15);
+				--gradient-luxury: linear-gradient(135deg, #d4af37 0%, #ffe57f 100%);
+				--gradient-trust: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				--gradient-urgency: linear-gradient(135deg, #ff6b8a 0%, #e74c3c 100%);
+			}
+			body {
+				font-family: "Inter", sans-serif;
+				background: var(--neutral-light);
+				color: var(--text-dark);
+				margin: 0;
+			}
+			.container {
+				max-width: 1100px;
+				margin: 0 auto;
+				padding: 0 18px;
+			}
+			.header {
+				background: var(--primary-deep);
+				color: var(--primary-gold);
+				padding: 1.2rem 0;
+				text-align: center;
+				font-family: "Playfair Display", serif;
+				font-size: 2rem;
+				font-weight: 700;
+				letter-spacing: -0.5px;
+			}
+			.hero {
+				background: linear-gradient(
+					135deg,
+					var(--primary-deep) 0%,
+					var(--primary-royal) 100%
+				);
+				color: white;
+				padding: 3.5rem 0 2.5rem 0;
+				text-align: center;
+			}
+			.hero h1 {
+				font-family: "Playfair Display", serif;
+				font-size: 2.7rem;
+				margin-bottom: 1rem;
+			}
+			.hero .highlight {
+				background: var(--gradient-luxury);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+			}
+			.hero p {
+				font-size: 1.2rem;
+				margin-bottom: 2rem;
+				color: rgba(255, 255, 255, 0.92);
+			}
+			.hero-cta {
+				display: flex;
+				justify-content: center;
+				gap: 1.2rem;
+				margin-bottom: 1.5rem;
+				flex-wrap: wrap;
+			}
+			.btn-primary,
+			.btn-secondary {
+				padding: 1.1rem 2.2rem;
+				border-radius: 30px;
+				font-weight: 700;
+				font-size: 1.1rem;
+				text-decoration: none;
+				transition: all 0.3s;
+				box-shadow: var(--shadow-soft);
+				border: none;
+				cursor: pointer;
+				display: inline-block;
+			}
+			.btn-primary {
+				background: var(--gradient-luxury);
+				color: var(--primary-deep);
+			}
+			.btn-primary:hover {
+				transform: translateY(-3px);
+				box-shadow: var(--shadow-strong);
+			}
+			.btn-secondary {
+				background: transparent;
+				color: white;
+				border: 2px solid var(--primary-gold);
+			}
+			.btn-secondary:hover {
+				background: var(--primary-gold);
+				color: var(--primary-deep);
+			}
+			.section {
+				padding: 3.5rem 0 2.5rem 0;
+			}
+			.section-title {
+				font-family: "Playfair Display", serif;
+				font-size: 2.1rem;
+				margin-bottom: 1.2rem;
+				color: var(--primary-gold);
+				text-align: center;
+			}
+			.section-subtitle {
+				color: var(--text-light);
+				font-size: 1.1rem;
+				text-align: center;
+				margin-bottom: 2.2rem;
+			}
+			.gallery-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+				gap: 2rem;
+				margin-bottom: 2.5rem;
+			}
+			.gallery-item {
+				border-radius: 22px;
+				overflow: hidden;
+				box-shadow: var(--shadow-strong);
+				background: #fff;
+				transition: transform 0.2s, box-shadow 0.2s;
+				cursor: pointer;
+				position: relative;
+			}
+			.gallery-item img {
+				width: 100%;
+				height: 320px;
+				object-fit: cover;
+				display: block;
+				transition: transform 0.25s;
+			}
+			.gallery-item:hover {
+				transform: scale(1.03);
+				box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+			}
+			.gallery-item:hover img {
+				transform: scale(1.06);
+			}
+			.features-list {
+				max-width: 700px;
+				margin: 0 auto 2.5rem auto;
+				padding: 0;
+				list-style: none;
+			}
+			.features-list li {
+				display: flex;
+				align-items: center;
+				gap: 0.7rem;
+				font-size: 1.08rem;
+				margin-bottom: 1.1rem;
+			}
+			.features-list i {
+				color: var(--success-green);
+			}
+			.cta-section {
+				background: var(--gradient-trust);
+				color: white;
+				text-align: center;
+				padding: 2.5rem 0 2rem 0;
+				border-radius: 18px;
+				margin-bottom: 2.5rem;
+			}
+			.cta-section h3 {
+				font-size: 2rem;
+				margin-bottom: 1rem;
+				font-family: "Playfair Display", serif;
+			}
+			.cta-section .btn-primary {
+				margin: 0 0.7rem;
+			}
+			.pricing-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+				gap: 2rem;
+				margin-bottom: 2.5rem;
+			}
+			.pricing-card {
+				background: #fff;
+				padding: 2rem;
+				border-radius: 18px;
+				box-shadow: var(--shadow-soft);
+				text-align: center;
+				border: 2px solid transparent;
+				transition: all 0.3s;
+			}
+			.pricing-card:hover {
+				border-color: var(--primary-gold);
+				transform: translateY(-5px);
+			}
+			.pricing-title {
+				font-size: 1.3rem;
+				font-weight: 600;
+				color: var(--primary-gold);
+				margin-bottom: 1rem;
+			}
+			.pricing-price {
+				font-size: 2.5rem;
+				font-weight: 700;
+				color: var(--primary-deep);
+				margin-bottom: 1.5rem;
+			}
+			.pricing-features {
+				list-style: none;
+				padding: 0;
+				margin-bottom: 2rem;
+			}
+			.pricing-features li {
+				padding: 0.5rem 0;
+				border-bottom: 1px solid #eee;
+			}
+			.footer {
+				background: var(--primary-deep);
+				color: white;
+				padding: 2.5rem 0 1rem 0;
+				text-align: center;
+				font-size: 1rem;
+				margin-top: 2.5rem;
+			}
+			.footer a {
+				color: var(--primary-gold);
+				text-decoration: none;
+				font-weight: 600;
+			}
+			@media (max-width: 700px) {
+				.hero h1 {
+					font-size: 2rem;
+				}
+				.section-title {
+					font-size: 1.3rem;
+				}
+				.gallery-grid {
+					grid-template-columns: 1fr;
+				}
+				.gallery-item img {
+					height: 200px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<a
+				href="../index.html"
+				style="color: var(--primary-gold); text-decoration: none"
+				>Balloon Decoration Noida</a
+			>
+		</div>
+		<section class="hero">
+			<div class="container">
+				<h1>
+					<span class="highlight">Baby Shower Garland Decoration</span> in Noida
+					& Delhi
+				</h1>
+				<p>
+					Elegant garland decorations for your baby shower. Pastel colors,
+					custom themes, and professional setup guaranteed!
+				</p>
+				<div class="hero-cta">
+					<a
+						href="tel:+917627057190"
+						class="btn-primary"
+						><i class="fas fa-phone"></i> Call Now</a
+					>
+					<a
+						href="https://wa.me/917627057190"
+						class="btn-secondary"
+						><i class="fab fa-whatsapp"></i> WhatsApp Us</a
+					>
+				</div>
+			</div>
+		</section>
+		<section class="section">
+			<div class="container">
+				<div class="section-title">Garland Decoration Gallery</div>
+				<div class="section-subtitle">
+					Beautiful garland setups for baby showers. Get inspired for your
+					celebration!
+				</div>
+				<div class="gallery-grid">
+					<div class="gallery-item">
+						<img
+							src="../images/WhatsApp Image 2025-07-15 at 20.42.13.jpeg"
+							alt="Baby Shower Garland Decor 1" />
+					</div>
+					<div class="gallery-item">
+						<img
+							src="../images/WhatsApp Image 2025-07-15 at 20.42.10.jpeg"
+							alt="Baby Shower Garland Decor 2" />
+					</div>
+					<div class="gallery-item">
+						<img
+							src="../images/WhatsApp Image 2025-07-15 at 20.42.10 (1).jpeg"
+							alt="Baby Shower Garland Decor 3" />
+					</div>
+					<div class="gallery-item">
+						<img
+							src="../images/WhatsApp Image 2025-07-15 at 20.42.11.jpeg"
+							alt="Baby Shower Garland Decor 4" />
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="section">
+			<div class="container">
+				<div class="section-title">Garland Decoration Packages</div>
+				<div class="pricing-grid">
+					<div class="pricing-card">
+						<div class="pricing-title">Basic Garland Package</div>
+						<div class="pricing-price">₹2,999</div>
+						<ul class="pricing-features">
+							<li>Welcome Baby Garland</li>
+							<li>Pastel Color Theme</li>
+							<li>Basic Setup</li>
+							<li>Same Day Service</li>
+						</ul>
+						<a
+							href="tel:+917627057190"
+							class="btn-primary"
+							>Book Now</a
+						>
+					</div>
+					<div class="pricing-card">
+						<div class="pricing-title">Premium Garland Package</div>
+						<div class="pricing-price">₹4,999</div>
+						<ul class="pricing-features">
+							<li>Welcome Baby Garland</li>
+							<li>Custom Color Theme</li>
+							<li>Premium Setup</li>
+							<li>Photo Backdrop</li>
+							<li>Props Included</li>
+						</ul>
+						<a
+							href="tel:+917627057190"
+							class="btn-primary"
+							>Book Now</a
+						>
+					</div>
+					<div class="pricing-card">
+						<div class="pricing-title">Luxury Garland Package</div>
+						<div class="pricing-price">₹7,999</div>
+						<ul class="pricing-features">
+							<li>Welcome Baby Garland</li>
+							<li>Custom Theme Design</li>
+							<li>Premium Setup</li>
+							<li>Photo Backdrop</li>
+							<li>Props & Lights</li>
+							<li>Personalized Touch</li>
+						</ul>
+						<a
+							href="tel:+917627057190"
+							class="btn-primary"
+							>Book Now</a
+						>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="section">
+			<div class="container">
+				<div class="section-title">Why Choose Our Garland Decorations?</div>
+				<ul class="features-list">
+					<li>
+						<i class="fas fa-check"></i> Beautiful pastel and custom color
+						garlands
+					</li>
+					<li><i class="fas fa-check"></i> Welcome baby themed garlands</li>
+					<li>
+						<i class="fas fa-check"></i> Professional installation and setup
+					</li>
+					<li><i class="fas fa-check"></i> 100% satisfaction guaranteed</li>
+					<li><i class="fas fa-check"></i> Same-day setup available</li>
+					<li><i class="fas fa-check"></i> Serving Noida, Delhi, and NCR</li>
+				</ul>
+				<div class="cta-section">
+					<h3>Ready to Book Your Garland Decoration?</h3>
+					<a
+						href="tel:+917627057190"
+						class="btn-primary"
+						><i class="fas fa-phone"></i> Call Now</a
+					>
+					<a
+						href="https://wa.me/917627057190"
+						class="btn-secondary"
+						><i class="fab fa-whatsapp"></i> WhatsApp Us</a
+					>
+				</div>
+			</div>
+		</section>
+		<div class="footer">
+			<div class="footer-bottom">
+				&copy; 2024 Balloon Decoration Noida. All rights reserved.<br />
+				<a href="tel:+917627057190"
+					><i class="fas fa-phone"></i> +91 76270 57190</a
+				>
+				|
+				<a href="https://wa.me/917627057190"
+					><i class="fab fa-whatsapp"></i> WhatsApp</a
+				>
+			</div>
+		</div>
+		<script>
+			// Lightbox for gallery
+			(function () {
+				const gallery = document.querySelector(".gallery-grid");
+				if (!gallery) return;
+				gallery.addEventListener("click", function (e) {
+					const img = e.target.closest("img");
+					if (!img) return;
+					const src = img.src;
+					const alt = img.alt;
+					const overlay = document.createElement("div");
+					overlay.className = "lightbox-overlay";
+					const lightboxImg = document.createElement("img");
+					lightboxImg.className = "lightbox-img";
+					lightboxImg.src = src;
+					lightboxImg.alt = alt;
+					const closeBtn = document.createElement("button");
+					closeBtn.className = "lightbox-close";
+					closeBtn.innerHTML = "&times;";
+					closeBtn.onclick = function () {
+						document.body.removeChild(overlay);
+						document.body.removeChild(closeBtn);
+						document.body.style.overflow = "";
+					};
+					overlay.onclick = function (e) {
+						if (e.target === overlay) closeBtn.onclick();
+					};
+					document.body.appendChild(overlay);
+					overlay.appendChild(lightboxImg);
+					document.body.appendChild(closeBtn);
+					document.body.style.overflow = "hidden";
+				});
+			})();
+		</script>
+	</body>
+</html>
