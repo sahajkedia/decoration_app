@@ -1955,7 +1955,7 @@
 
 			.slide {
 				flex: 0 0 100%;
-				height: 500px;
+				height: 600px;
 				position: relative;
 				display: none;
 				cursor: pointer;
@@ -1974,7 +1974,53 @@
 			}
 
 			.slide:hover img {
-				transform: scale(1.08);
+				transform: scale(1.05);
+			}
+
+			.slide::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: linear-gradient(
+					45deg,
+					rgba(212, 175, 55, 0.1),
+					transparent
+				);
+				opacity: 0;
+				transition: opacity 0.3s ease;
+				z-index: 1;
+				pointer-events: none;
+			}
+
+			.slide:hover::before {
+				opacity: 1;
+			}
+
+			.slide::after {
+				content: "🔍 Click to view larger";
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				background: rgba(0, 0, 0, 0.8);
+				color: white;
+				padding: var(--space-3) var(--space-4);
+				border-radius: var(--radius-lg);
+				font-size: var(--font-size-sm);
+				font-weight: 600;
+				opacity: 0;
+				transition: opacity 0.3s ease;
+				z-index: 2;
+				pointer-events: none;
+				backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.2);
+			}
+
+			.slide:hover::after {
+				opacity: 1;
 			}
 
 			/* Slide Overlay */
@@ -1989,10 +2035,26 @@
 				transform: translateY(100%);
 				transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 				backdrop-filter: blur(10px);
+				z-index: 3;
 			}
 
 			.slide.active .slide-overlay {
 				transform: translateY(0);
+			}
+
+			.slide-overlay::before {
+				content: "👆 Click to view larger";
+				position: absolute;
+				top: var(--space-3);
+				right: var(--space-4);
+				background: var(--primary-gold);
+				color: var(--primary-deep);
+				padding: var(--space-1) var(--space-3);
+				border-radius: var(--radius-full);
+				font-size: var(--font-size-xs);
+				font-weight: 600;
+				opacity: 0.9;
+				animation: pulse 2s infinite;
 			}
 
 			.slide-overlay h4 {
@@ -2123,7 +2185,12 @@
 				}
 
 				.slide {
-					height: 350px;
+					height: 450px;
+				}
+
+				.slide::after {
+					font-size: var(--font-size-xs);
+					padding: var(--space-2) var(--space-3);
 				}
 
 				.slide-overlay {
@@ -2182,7 +2249,13 @@
 				}
 
 				.slide {
-					height: 280px;
+					height: 380px;
+				}
+
+				.slide::after {
+					font-size: var(--font-size-xs);
+					padding: var(--space-2);
+					content: "🔍 Tap to view";
 				}
 
 				.slide-overlay {
