@@ -2705,24 +2705,61 @@
 				/* Dropdown responsive */
 				.nav-dropdown {
 					position: static;
+					width: 100%;
+				}
+
+				.dropdown-toggle {
+					width: 100%;
+					justify-content: space-between;
+					padding: 0.7rem 2rem;
+					border-radius: 10px;
+					transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+				}
+
+				.dropdown-toggle:hover,
+				.dropdown-toggle:focus {
+					background: var(--primary-gold);
+					color: var(--primary-deep);
+					box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+				}
+
+				.dropdown-toggle.active i {
+					transform: rotate(180deg);
 				}
 
 				.dropdown-menu {
 					position: static;
+					opacity: 0;
+					visibility: hidden;
+					max-height: 0;
+					overflow: hidden;
+					background: rgba(212, 175, 55, 0.05);
+					border-radius: 8px;
+					margin: 0.5rem 1rem;
+					padding: 0;
+					transition: all 0.3s ease;
+					border: 1px solid rgba(212, 175, 55, 0.1);
+				}
+
+				.dropdown-menu.active {
 					opacity: 1;
 					visibility: visible;
-					transform: none;
-					background: transparent;
-					box-shadow: none;
-					border: none;
-					padding: 0;
-					margin-top: 1rem;
+					max-height: 500px;
+					padding: 0.5rem 0;
 				}
 
 				.dropdown-menu a {
-					padding: 0.5rem 1rem;
+					padding: 0.5rem 1.5rem;
 					border-left: none;
-					border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+					border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+					font-size: 1.1rem;
+					color: rgba(255, 255, 255, 0.9);
+				}
+
+				.dropdown-menu a:hover {
+					background: rgba(212, 175, 55, 0.1);
+					color: var(--primary-gold);
+					transform: none;
 				}
 
 				/* Gallery responsive */
@@ -4126,6 +4163,20 @@
 					padding: var(--space-2) var(--space-4);
 					font-size: var(--font-size-xs);
 				}
+
+				.dropdown-toggle {
+					font-size: 1.3rem;
+					font-weight: 600;
+				}
+
+				.dropdown-menu {
+					margin: 0.3rem 0.8rem;
+				}
+
+				.dropdown-menu a {
+					font-size: 1rem;
+					padding: 0.4rem 1.2rem;
+				}
 			}
 
 			@media (max-width: 480px) {
@@ -4153,6 +4204,20 @@
 					width: 20px;
 					height: 2px;
 					margin: 2px 0;
+				}
+
+				.dropdown-toggle {
+					font-size: 1.2rem;
+					padding: 0.6rem 1.5rem;
+				}
+
+				.dropdown-menu {
+					margin: 0.2rem 0.6rem;
+				}
+
+				.dropdown-menu a {
+					font-size: 0.95rem;
+					padding: 0.3rem 1rem;
 				}
 			}
 			/* Enhanced Hamburger Animation */
@@ -6510,6 +6575,9 @@
 				const hamburger = document.getElementById("hamburger-menu");
 				const navMenu = document.getElementById("nav-menu");
 				const navOverlay = document.getElementById("nav-overlay");
+				const dropdownToggle = document.querySelector(".dropdown-toggle");
+				const dropdownMenu = document.querySelector(".dropdown-menu");
+
 				// Toggle menu
 				hamburger.addEventListener("click", function (e) {
 					navMenu.classList.toggle("active");
@@ -6523,15 +6591,34 @@
 						: "";
 					e.stopPropagation();
 				});
-				// Close menu on link click
+
+				// Mobile dropdown toggle
+				if (dropdownToggle && dropdownMenu) {
+					dropdownToggle.addEventListener("click", function (e) {
+						// Only handle dropdown toggle on mobile
+						if (window.innerWidth <= 900) {
+							e.preventDefault();
+							e.stopPropagation();
+							dropdownToggle.classList.toggle("active");
+							dropdownMenu.classList.toggle("active");
+						}
+					});
+				}
+
+				// Close menu on link click (except dropdown toggle)
 				navMenu.querySelectorAll("a").forEach((link) => {
-					link.addEventListener("click", function () {
+					link.addEventListener("click", function (e) {
+						// Don't close menu if clicking on dropdown toggle
+						if (link.classList.contains("dropdown-toggle")) {
+							return;
+						}
 						navMenu.classList.remove("active");
 						hamburger.classList.remove("active");
 						navOverlay.classList.remove("active");
 						document.body.style.overflow = "";
 					});
 				});
+
 				// Close menu on overlay click
 				navOverlay.addEventListener("click", function () {
 					navMenu.classList.remove("active");
@@ -6539,6 +6626,7 @@
 					navOverlay.classList.remove("active");
 					document.body.style.overflow = "";
 				});
+
 				// Close menu on outside click
 				document.addEventListener("click", function (e) {
 					if (
@@ -6550,6 +6638,14 @@
 						hamburger.classList.remove("active");
 						navOverlay.classList.remove("active");
 						document.body.style.overflow = "";
+					}
+				});
+
+				// Handle window resize to reset dropdown state
+				window.addEventListener("resize", function () {
+					if (window.innerWidth > 900) {
+						dropdownToggle.classList.remove("active");
+						dropdownMenu.classList.remove("active");
 					}
 				});
 			});
