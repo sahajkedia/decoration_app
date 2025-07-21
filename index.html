@@ -4238,8 +4238,10 @@
 					font-weight: 600;
 					text-decoration: none;
 					margin: 0.7rem 0;
-					display: block;
+					display: flex;
+					align-items: center;
 					text-align: center;
+					cursor: pointer;
 				}
 
 				.nav-cta.nav-menu .dropdown-toggle:hover,
@@ -4255,23 +4257,16 @@
 
 				.nav-cta.nav-menu .dropdown-menu {
 					position: static;
-					opacity: 0;
-					visibility: hidden;
-					max-height: 0;
-					overflow: hidden;
+					display: none;
 					background: rgba(212, 175, 55, 0.05);
 					border-radius: 8px;
 					margin: 0.5rem 1rem;
-					padding: 0;
-					transition: all 0.3s ease;
+					padding: 0.5rem 0;
 					border: 1px solid rgba(212, 175, 55, 0.1);
 				}
 
 				.nav-cta.nav-menu .dropdown-menu.active {
-					opacity: 1;
-					visibility: visible;
-					max-height: 500px;
-					padding: 0.5rem 0;
+					display: block;
 				}
 
 				.nav-cta.nav-menu .dropdown-menu a {
@@ -6565,6 +6560,14 @@
 				const dropdownToggle = document.querySelector(".dropdown-toggle");
 				const dropdownMenu = document.querySelector(".dropdown-menu");
 
+				console.log("Mobile menu elements:", {
+					hamburger,
+					navMenu,
+					navOverlay,
+					dropdownToggle,
+					dropdownMenu,
+				});
+
 				// Toggle menu
 				hamburger.addEventListener("click", function (e) {
 					navMenu.classList.toggle("active");
@@ -6581,24 +6584,41 @@
 
 				// Mobile dropdown toggle
 				if (dropdownToggle && dropdownMenu) {
+					console.log("Setting up dropdown toggle");
+
 					dropdownToggle.addEventListener("click", function (e) {
+						console.log(
+							"Dropdown toggle clicked, window width:",
+							window.innerWidth
+						);
 						// Only handle dropdown toggle on mobile
 						if (window.innerWidth <= 900) {
 							e.preventDefault();
 							e.stopPropagation();
+							console.log("Toggling dropdown");
 							dropdownToggle.classList.toggle("active");
 							dropdownMenu.classList.toggle("active");
+							console.log(
+								"Dropdown active:",
+								dropdownMenu.classList.contains("active")
+							);
 						}
 					});
-				}
 
-				// Close dropdown when clicking on dropdown menu items
-				dropdownMenu.querySelectorAll("a").forEach((link) => {
-					link.addEventListener("click", function () {
-						dropdownToggle.classList.remove("active");
-						dropdownMenu.classList.remove("active");
+					// Close dropdown when clicking on dropdown menu items
+					dropdownMenu.querySelectorAll("a").forEach((link) => {
+						link.addEventListener("click", function () {
+							console.log("Dropdown item clicked, closing dropdown");
+							dropdownToggle.classList.remove("active");
+							dropdownMenu.classList.remove("active");
+						});
 					});
-				});
+				} else {
+					console.log("Dropdown elements not found:", {
+						dropdownToggle,
+						dropdownMenu,
+					});
+				}
 
 				// Close menu on link click (except dropdown toggle)
 				navMenu.querySelectorAll("a").forEach((link) => {
