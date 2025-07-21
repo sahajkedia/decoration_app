@@ -2177,11 +2177,12 @@
 				}
 
 				.slide {
-					height: 400px;
+					height: 450px;
 				}
 
 				.slide img {
 					object-position: center;
+					object-fit: cover;
 				}
 
 				.slide-overlay {
@@ -2227,14 +2228,6 @@
 					width: 10px;
 					height: 10px;
 				}
-
-				.auto-play-btn {
-					width: 40px;
-					height: 40px;
-					font-size: var(--font-size-sm);
-					top: var(--space-2);
-					right: var(--space-2);
-				}
 			}
 
 			@media (max-width: 480px) {
@@ -2248,11 +2241,12 @@
 				}
 
 				.slide {
-					height: 320px;
+					height: 380px;
 				}
 
 				.slide img {
 					object-position: center;
+					object-fit: cover;
 				}
 
 				.slide-overlay {
@@ -2288,12 +2282,6 @@
 				.dot {
 					width: 8px;
 					height: 8px;
-				}
-
-				.auto-play-btn {
-					width: 36px;
-					height: 36px;
-					font-size: var(--font-size-xs);
 				}
 			}
 
@@ -3142,6 +3130,7 @@
 				top: var(--space-4);
 				right: var(--space-4);
 				z-index: 20;
+				pointer-events: none;
 			}
 
 			.gallery-modal-close {
@@ -3156,6 +3145,7 @@
 				transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 				backdrop-filter: blur(15px);
 				box-shadow: var(--shadow-lg);
+				pointer-events: auto;
 			}
 
 			.gallery-modal-close:hover {
@@ -3188,6 +3178,13 @@
 				align-items: center;
 				justify-content: center;
 				padding: var(--space-8);
+			}
+
+			.gallery-modal-slide .gallery-modal-close {
+				position: absolute;
+				top: var(--space-4);
+				right: var(--space-4);
+				z-index: 25;
 			}
 
 			.gallery-modal-slide img {
@@ -3303,12 +3300,9 @@
 					border-radius: var(--radius-xl);
 				}
 
-				.gallery-modal-header {
+				.gallery-modal-slide .gallery-modal-close {
 					top: var(--space-2);
 					right: var(--space-2);
-				}
-
-				.gallery-modal-close {
 					width: 40px;
 					height: 40px;
 					font-size: var(--font-size-base);
@@ -3366,7 +3360,9 @@
 					border-radius: var(--radius-lg);
 				}
 
-				.gallery-modal-close {
+				.gallery-modal-slide .gallery-modal-close {
+					top: var(--space-2);
+					right: var(--space-2);
 					width: 36px;
 					height: 36px;
 					font-size: var(--font-size-sm);
@@ -4958,81 +4954,6 @@
 			</div>
 		</section>
 
-		<!-- Authority Section -->
-		<section class="authority section">
-			<div class="container">
-				<div class="authority-content">
-					<div class="authority-text">
-						<h3>
-							Why 1000+ Families Choose Balloon Decoration Noida as Their
-							Trusted Partner
-						</h3>
-						<p>
-							For over 5 years, we've been transforming ordinary spaces into
-							extraordinary experiences. Our master decorators combine artistic
-							vision with flawless execution to create celebrations that your
-							guests will talk about for years.
-						</p>
-						<div class="credentials">
-							<div class="credential-item">
-								<div class="credential-icon">
-									<i class="fas fa-award"></i>
-								</div>
-								<div class="credential-text">
-									<h4>Certified Professionals</h4>
-									<p>Licensed & Insured Team</p>
-								</div>
-							</div>
-							<div class="credential-item">
-								<div class="credential-icon">
-									<i class="fas fa-medal"></i>
-								</div>
-								<div class="credential-text">
-									<h4>Industry Leaders</h4>
-									<p>5+ Years Excellence</p>
-								</div>
-							</div>
-							<div class="credential-item">
-								<div class="credential-icon">
-									<i class="fas fa-shield-alt"></i>
-								</div>
-								<div class="credential-text">
-									<h4>Money-Back Guarantee</h4>
-									<p>100% Satisfaction Promise</p>
-								</div>
-							</div>
-							<div class="credential-item">
-								<div class="credential-icon">
-									<i class="fas fa-clock"></i>
-								</div>
-								<div class="credential-text">
-									<h4>On-Time Delivery</h4>
-									<p>Never Late, Always Ready</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="stats-grid">
-						<div class="stat-card">
-							<div class="stat-number">1000+</div>
-							<div class="stat-label">Happy Families</div>
-							<div class="stat-sublabel">Across Noida & Delhi</div>
-						</div>
-						<div class="stat-card">
-							<div class="stat-number">4.9</div>
-							<div class="stat-label">Star Rating</div>
-							<div class="stat-sublabel">Google Reviews</div>
-						</div>
-						<div class="stat-card">
-							<div class="stat-number">100%</div>
-							<div class="stat-label">On-Time Setup</div>
-							<div class="stat-sublabel">Never Late</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
 		<!-- Gallery Section -->
 		<section
 			class="gallery section"
@@ -5152,11 +5073,6 @@
 								class="dot"
 								onclick="goToSlide('birthday', 5)"></span>
 						</div>
-						<button
-							class="auto-play-btn"
-							onclick="toggleAutoPlay('birthday')">
-							<i class="fas fa-pause"></i>
-						</button>
 					</div>
 				</div>
 			</div>
@@ -5239,11 +5155,6 @@
 								class="dot"
 								onclick="goToSlide('anniversary', 3)"></span>
 						</div>
-						<button
-							class="auto-play-btn"
-							onclick="toggleAutoPlay('anniversary')">
-							<i class="fas fa-pause"></i>
-						</button>
 					</div>
 				</div>
 			</div>
@@ -5311,11 +5222,6 @@
 								class="dot"
 								onclick="goToSlide('babyshower', 2)"></span>
 						</div>
-						<button
-							class="auto-play-btn"
-							onclick="toggleAutoPlay('babyshower')">
-							<i class="fas fa-pause"></i>
-						</button>
 					</div>
 				</div>
 			</div>
@@ -5383,11 +5289,6 @@
 								class="dot"
 								onclick="goToSlide('corporate', 2)"></span>
 						</div>
-						<button
-							class="auto-play-btn"
-							onclick="toggleAutoPlay('corporate')">
-							<i class="fas fa-pause"></i>
-						</button>
 					</div>
 				</div>
 			</div>
@@ -5455,11 +5356,6 @@
 								class="dot"
 								onclick="goToSlide('wedding', 2)"></span>
 						</div>
-						<button
-							class="auto-play-btn"
-							onclick="toggleAutoPlay('wedding')">
-							<i class="fas fa-pause"></i>
-						</button>
 					</div>
 				</div>
 			</div>
@@ -5527,11 +5423,6 @@
 								class="dot"
 								onclick="goToSlide('engagement', 2)"></span>
 						</div>
-						<button
-							class="auto-play-btn"
-							onclick="toggleAutoPlay('engagement')">
-							<i class="fas fa-pause"></i>
-						</button>
 					</div>
 				</div>
 			</div>
@@ -5599,11 +5490,6 @@
 								class="dot"
 								onclick="goToSlide('housewarming', 2)"></span>
 						</div>
-						<button
-							class="auto-play-btn"
-							onclick="toggleAutoPlay('housewarming')">
-							<i class="fas fa-pause"></i>
-						</button>
 					</div>
 				</div>
 			</div>
@@ -5672,11 +5558,6 @@
 								class="dot"
 								onclick="goToSlide('graduation', 2)"></span>
 						</div>
-						<button
-							class="auto-play-btn"
-							onclick="toggleAutoPlay('graduation')">
-							<i class="fas fa-pause"></i>
-						</button>
 					</div>
 				</div>
 			</div>
@@ -5746,11 +5627,6 @@
 								class="dot"
 								onclick="goToSlide('theme', 2)"></span>
 						</div>
-						<button
-							class="auto-play-btn"
-							onclick="toggleAutoPlay('theme')">
-							<i class="fas fa-pause"></i>
-						</button>
 					</div>
 				</div>
 			</div>
@@ -5820,11 +5696,6 @@
 								class="dot"
 								onclick="goToSlide('custom', 2)"></span>
 						</div>
-						<button
-							class="auto-play-btn"
-							onclick="toggleAutoPlay('custom')">
-							<i class="fas fa-pause"></i>
-						</button>
 					</div>
 				</div>
 			</div>
@@ -5904,6 +5775,7 @@
 				</div>
 			</div>
 		</section>
+
 		<!-- Social Proof Section -->
 		<section
 			class="social-proof-section section"
@@ -6200,13 +6072,6 @@
 			class="gallery-modal-overlay"
 			id="galleryModalOverlay">
 			<div class="gallery-modal">
-				<div class="gallery-modal-header">
-					<button
-						class="gallery-modal-close"
-						onclick="closeGalleryModal()">
-						<i class="fas fa-times"></i>
-					</button>
-				</div>
 				<div class="gallery-modal-content">
 					<div class="gallery-modal-slider">
 						<div
@@ -6734,7 +6599,12 @@
 						// Create modal slide
 						const modalSlide = document.createElement("div");
 						modalSlide.className = "gallery-modal-slide";
-						modalSlide.innerHTML = `<img src="${img.src}" alt="${img.alt}">`;
+						modalSlide.innerHTML = `
+							<img src="${img.src}" alt="${img.alt}">
+							<button class="gallery-modal-close" onclick="closeGalleryModal()">
+								<i class="fas fa-times"></i>
+							</button>
+						`;
 						modalTrack.appendChild(modalSlide);
 
 						// Create dot
