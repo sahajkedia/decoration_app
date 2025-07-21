@@ -3404,6 +3404,293 @@
 				}
 			}
 
+			/* Authority Section - Mobile Responsive */
+			.authority {
+				background: linear-gradient(
+					135deg,
+					var(--neutral-white) 0%,
+					rgba(212, 175, 55, 0.05) 100%
+				);
+				position: relative;
+				overflow: hidden;
+			}
+
+			.authority::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23d4af37" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23d4af37" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="%23d4af37" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+				opacity: 0.3;
+				pointer-events: none;
+			}
+
+			.authority-content {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: var(--space-16);
+				align-items: center;
+				position: relative;
+				z-index: 1;
+			}
+
+			.authority-text h3 {
+				font-family: "Playfair Display", serif;
+				font-size: clamp(1.8rem, 3vw, 2.5rem);
+				font-weight: 700;
+				color: var(--text-dark);
+				margin-bottom: var(--space-6);
+				line-height: 1.2;
+				letter-spacing: -0.02em;
+			}
+
+			.authority-text p {
+				font-size: var(--font-size-lg);
+				color: var(--text-light);
+				line-height: 1.6;
+				margin-bottom: var(--space-8);
+			}
+
+			.credentials {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: var(--space-6);
+			}
+
+			.credential-item {
+				display: flex;
+				align-items: flex-start;
+				gap: var(--space-4);
+				padding: var(--space-4);
+				background: rgba(255, 255, 255, 0.8);
+				border-radius: var(--radius-xl);
+				backdrop-filter: blur(10px);
+				border: 1px solid rgba(212, 175, 55, 0.1);
+				transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+			}
+
+			.credential-item:hover {
+				transform: translateY(-2px);
+				box-shadow: var(--shadow-lg);
+				border-color: rgba(212, 175, 55, 0.2);
+			}
+
+			.credential-icon {
+				width: 48px;
+				height: 48px;
+				background: var(--gradient-luxury);
+				border-radius: var(--radius-lg);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: var(--primary-deep);
+				font-size: var(--font-size-lg);
+				flex-shrink: 0;
+			}
+
+			.credential-text h4 {
+				font-size: var(--font-size-base);
+				font-weight: 600;
+				color: var(--text-dark);
+				margin-bottom: var(--space-1);
+				line-height: 1.3;
+			}
+
+			.credential-text p {
+				font-size: var(--font-size-sm);
+				color: var(--text-light);
+				margin: 0;
+				line-height: 1.4;
+			}
+
+			.stats-grid {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: var(--space-6);
+			}
+
+			.stat-card {
+				background: linear-gradient(
+					135deg,
+					var(--primary-gold) 0%,
+					#ffe57f 100%
+				);
+				padding: var(--space-8);
+				border-radius: var(--radius-2xl);
+				text-align: center;
+				color: var(--primary-deep);
+				box-shadow: var(--shadow-lg);
+				border: 2px solid rgba(255, 255, 255, 0.2);
+				transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+			}
+
+			.stat-card:hover {
+				transform: translateY(-4px) scale(1.02);
+				box-shadow: var(--shadow-xl);
+			}
+
+			.stat-number {
+				font-size: clamp(2rem, 4vw, 3rem);
+				font-weight: 700;
+				margin-bottom: var(--space-2);
+				line-height: 1;
+			}
+
+			.stat-label {
+				font-size: var(--font-size-base);
+				font-weight: 600;
+				margin-bottom: var(--space-1);
+				line-height: 1.3;
+			}
+
+			.stat-sublabel {
+				font-size: var(--font-size-sm);
+				opacity: 0.8;
+				line-height: 1.4;
+			}
+
+			/* Mobile Responsive for Authority Section */
+			@media (max-width: 1024px) {
+				.authority-content {
+					grid-template-columns: 1fr;
+					gap: var(--space-12);
+				}
+
+				.credentials {
+					grid-template-columns: repeat(2, 1fr);
+					gap: var(--space-4);
+				}
+
+				.stats-grid {
+					grid-template-columns: repeat(3, 1fr);
+					gap: var(--space-4);
+				}
+
+				.stat-card {
+					padding: var(--space-6);
+				}
+			}
+
+			@media (max-width: 768px) {
+				.authority-text h3 {
+					font-size: clamp(1.5rem, 4vw, 2rem);
+					margin-bottom: var(--space-4);
+				}
+
+				.authority-text p {
+					font-size: var(--font-size-base);
+					margin-bottom: var(--space-6);
+				}
+
+				.credentials {
+					grid-template-columns: 1fr;
+					gap: var(--space-3);
+				}
+
+				.credential-item {
+					padding: var(--space-3);
+				}
+
+				.credential-icon {
+					width: 40px;
+					height: 40px;
+					font-size: var(--font-size-base);
+				}
+
+				.credential-text h4 {
+					font-size: var(--font-size-sm);
+				}
+
+				.credential-text p {
+					font-size: var(--font-size-xs);
+				}
+
+				.stats-grid {
+					grid-template-columns: repeat(3, 1fr);
+					gap: var(--space-3);
+				}
+
+				.stat-card {
+					padding: var(--space-4);
+				}
+
+				.stat-number {
+					font-size: clamp(1.5rem, 5vw, 2rem);
+				}
+
+				.stat-label {
+					font-size: var(--font-size-sm);
+				}
+
+				.stat-sublabel {
+					font-size: var(--font-size-xs);
+				}
+			}
+
+			@media (max-width: 480px) {
+				.authority-content {
+					gap: var(--space-8);
+				}
+
+				.authority-text h3 {
+					font-size: clamp(1.3rem, 5vw, 1.8rem);
+					margin-bottom: var(--space-3);
+				}
+
+				.authority-text p {
+					font-size: var(--font-size-sm);
+					margin-bottom: var(--space-5);
+				}
+
+				.credentials {
+					gap: var(--space-2);
+				}
+
+				.credential-item {
+					padding: var(--space-2);
+					flex-direction: column;
+					text-align: center;
+					gap: var(--space-2);
+				}
+
+				.credential-icon {
+					width: 36px;
+					height: 36px;
+					font-size: var(--font-size-sm);
+				}
+
+				.credential-text h4 {
+					font-size: var(--font-size-xs);
+				}
+
+				.credential-text p {
+					font-size: var(--font-size-xs);
+				}
+
+				.stats-grid {
+					grid-template-columns: 1fr;
+					gap: var(--space-2);
+				}
+
+				.stat-card {
+					padding: var(--space-3);
+				}
+
+				.stat-number {
+					font-size: clamp(1.8rem, 6vw, 2.2rem);
+				}
+
+				.stat-label {
+					font-size: var(--font-size-xs);
+				}
+
+				.stat-sublabel {
+					font-size: var(--font-size-xs);
+				}
+			}
+
 			@keyframes bounce {
 				0%,
 				20%,
@@ -4665,6 +4952,81 @@
 									<i class="fab fa-whatsapp"></i> Get Quote
 								</a>
 							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Authority Section -->
+		<section class="authority section">
+			<div class="container">
+				<div class="authority-content">
+					<div class="authority-text">
+						<h3>
+							Why 1000+ Families Choose Balloon Decoration Noida as Their
+							Trusted Partner
+						</h3>
+						<p>
+							For over 5 years, we've been transforming ordinary spaces into
+							extraordinary experiences. Our master decorators combine artistic
+							vision with flawless execution to create celebrations that your
+							guests will talk about for years.
+						</p>
+						<div class="credentials">
+							<div class="credential-item">
+								<div class="credential-icon">
+									<i class="fas fa-award"></i>
+								</div>
+								<div class="credential-text">
+									<h4>Certified Professionals</h4>
+									<p>Licensed & Insured Team</p>
+								</div>
+							</div>
+							<div class="credential-item">
+								<div class="credential-icon">
+									<i class="fas fa-medal"></i>
+								</div>
+								<div class="credential-text">
+									<h4>Industry Leaders</h4>
+									<p>5+ Years Excellence</p>
+								</div>
+							</div>
+							<div class="credential-item">
+								<div class="credential-icon">
+									<i class="fas fa-shield-alt"></i>
+								</div>
+								<div class="credential-text">
+									<h4>Money-Back Guarantee</h4>
+									<p>100% Satisfaction Promise</p>
+								</div>
+							</div>
+							<div class="credential-item">
+								<div class="credential-icon">
+									<i class="fas fa-clock"></i>
+								</div>
+								<div class="credential-text">
+									<h4>On-Time Delivery</h4>
+									<p>Never Late, Always Ready</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="stats-grid">
+						<div class="stat-card">
+							<div class="stat-number">1000+</div>
+							<div class="stat-label">Happy Families</div>
+							<div class="stat-sublabel">Across Noida & Delhi</div>
+						</div>
+						<div class="stat-card">
+							<div class="stat-number">4.9</div>
+							<div class="stat-label">Star Rating</div>
+							<div class="stat-sublabel">Google Reviews</div>
+						</div>
+						<div class="stat-card">
+							<div class="stat-number">100%</div>
+							<div class="stat-label">On-Time Setup</div>
+							<div class="stat-sublabel">Never Late</div>
 						</div>
 					</div>
 				</div>
