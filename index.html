@@ -563,7 +563,12 @@
 				display: inline-flex;
 				align-items: center;
 				gap: var(--space-2);
-				background: var(--gradient-urgency);
+				background: linear-gradient(
+					135deg,
+					#ff6b8a 0%,
+					#e74c3c 50%,
+					#ff6b8a 100%
+				);
 				color: white;
 				padding: var(--space-3) var(--space-6);
 				border-radius: var(--radius-full);
@@ -571,6 +576,36 @@
 				margin-bottom: var(--space-6);
 				animation: pulse 2s infinite;
 				font-size: var(--font-size-sm);
+				box-shadow: 0 8px 24px rgba(231, 76, 60, 0.3);
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				backdrop-filter: blur(10px);
+				position: relative;
+				overflow: hidden;
+			}
+
+			.urgency-badge::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(
+					90deg,
+					transparent,
+					rgba(255, 255, 255, 0.3),
+					transparent
+				);
+				animation: shimmer 3s infinite;
+			}
+
+			@keyframes shimmer {
+				0% {
+					left: -100%;
+				}
+				100% {
+					left: 100%;
+				}
 			}
 
 			@media (max-width: 768px) {
@@ -651,16 +686,20 @@
 				color: var(--primary-gold);
 				font-weight: 500;
 				font-size: var(--font-size-sm);
-				padding: var(--space-2) var(--space-3);
-				background: rgba(212, 175, 55, 0.1);
-				border-radius: var(--radius-lg);
+				padding: var(--space-3) var(--space-4);
+				background: rgba(212, 175, 55, 0.15);
+				border-radius: var(--radius-xl);
 				backdrop-filter: blur(10px);
 				transition: all var(--transition-base);
+				border: 1px solid rgba(212, 175, 55, 0.2);
+				box-shadow: 0 4px 16px rgba(212, 175, 55, 0.1);
 			}
 
 			.trust-item:hover {
-				background: rgba(212, 175, 55, 0.2);
-				transform: translateY(-1px);
+				background: rgba(212, 175, 55, 0.25);
+				transform: translateY(-2px) scale(1.02);
+				box-shadow: 0 8px 24px rgba(212, 175, 55, 0.2);
+				border-color: rgba(212, 175, 55, 0.3);
 			}
 
 			.trust-item i {
@@ -676,7 +715,12 @@
 			}
 
 			.btn-primary {
-				background: var(--gradient-luxury);
+				background: linear-gradient(
+					135deg,
+					#d4af37 0%,
+					#ffe57f 50%,
+					#d4af37 100%
+				);
 				color: var(--primary-deep);
 				padding: var(--space-4) var(--space-10);
 				border-radius: var(--radius-full);
@@ -684,13 +728,15 @@
 				font-weight: 700;
 				font-size: var(--font-size-lg);
 				transition: all var(--transition-base);
-				box-shadow: var(--shadow-lg);
+				box-shadow: 0 8px 32px rgba(212, 175, 55, 0.3),
+					0 4px 16px rgba(0, 0, 0, 0.1);
 				position: relative;
 				overflow: hidden;
 				display: inline-flex;
 				align-items: center;
 				gap: var(--space-2);
 				min-height: 56px;
+				border: 2px solid rgba(212, 175, 55, 0.2);
 			}
 
 			.btn-primary::before {
@@ -714,17 +760,24 @@
 			}
 
 			.btn-primary:hover {
-				background: var(--gradient-luxury-hover);
-				transform: translateY(-3px);
-				box-shadow: var(--shadow-xl);
+				background: linear-gradient(
+					135deg,
+					#ffe57f 0%,
+					#d4af37 50%,
+					#ffe57f 100%
+				);
+				transform: translateY(-4px) scale(1.02);
+				box-shadow: 0 16px 48px rgba(212, 175, 55, 0.4),
+					0 8px 24px rgba(0, 0, 0, 0.15);
+				border-color: rgba(212, 175, 55, 0.4);
 			}
 
 			.btn-primary:active {
-				transform: translateY(-1px);
+				transform: translateY(-2px) scale(1.01);
 			}
 
 			.btn-secondary {
-				background: transparent;
+				background: rgba(255, 255, 255, 0.1);
 				color: white;
 				padding: var(--space-4) var(--space-10);
 				border: 2px solid var(--primary-gold);
@@ -739,6 +792,8 @@
 				min-height: 56px;
 				position: relative;
 				overflow: hidden;
+				backdrop-filter: blur(10px);
+				box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 			}
 
 			.btn-secondary::before {
@@ -758,13 +813,16 @@
 			}
 
 			.btn-secondary:hover {
+				background: var(--primary-gold);
 				color: var(--primary-deep);
-				transform: translateY(-3px);
-				box-shadow: var(--shadow-lg);
+				transform: translateY(-4px) scale(1.02);
+				box-shadow: 0 16px 48px rgba(212, 175, 55, 0.3),
+					0 8px 24px rgba(0, 0, 0, 0.15);
+				border-color: var(--primary-gold);
 			}
 
 			.btn-secondary:active {
-				transform: translateY(-1px);
+				transform: translateY(-2px) scale(1.01);
 			}
 
 			@media (max-width: 768px) {
@@ -800,13 +858,21 @@
 				display: flex;
 				align-items: center;
 				gap: var(--space-4);
-				color: rgba(255, 255, 255, 0.8);
+				color: rgba(255, 255, 255, 0.9);
 				font-size: var(--font-size-sm);
-				padding: var(--space-3) var(--space-4);
-				background: rgba(255, 255, 255, 0.1);
-				border-radius: var(--radius-lg);
-				backdrop-filter: blur(10px);
-				border: 1px solid rgba(255, 255, 255, 0.1);
+				padding: var(--space-4) var(--space-6);
+				background: rgba(255, 255, 255, 0.15);
+				border-radius: var(--radius-xl);
+				backdrop-filter: blur(15px);
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+				transition: all var(--transition-base);
+			}
+
+			.social-proof:hover {
+				background: rgba(255, 255, 255, 0.2);
+				transform: translateY(-1px);
+				box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
 			}
 
 			@media (max-width: 768px) {
@@ -925,7 +991,7 @@
 				}
 			}
 
-			/* Floating Elements */
+			/* Enhanced Floating Elements - Modern & Elegant */
 			.floating-elements {
 				position: absolute;
 				top: 0;
@@ -933,52 +999,145 @@
 				right: 0;
 				bottom: 0;
 				pointer-events: none;
+				overflow: hidden;
 			}
 
 			.floating-element {
 				position: absolute;
-				background: rgba(212, 175, 55, 0.1);
+				background: radial-gradient(
+					circle at 30% 30%,
+					rgba(212, 175, 55, 0.15) 0%,
+					rgba(212, 175, 55, 0.05) 70%,
+					transparent 100%
+				);
 				border-radius: 50%;
-				animation: float-random 15s infinite ease-in-out;
+				backdrop-filter: blur(2px);
+				border: 1px solid rgba(212, 175, 55, 0.1);
+				animation: float-elegant 20s infinite ease-in-out;
+				opacity: 0.6;
+			}
+
+			.floating-element::before {
+				content: "";
+				position: absolute;
+				top: 20%;
+				left: 20%;
+				width: 60%;
+				height: 60%;
+				background: radial-gradient(
+					circle,
+					rgba(255, 255, 255, 0.3) 0%,
+					transparent 70%
+				);
+				border-radius: 50%;
 			}
 
 			.floating-element:nth-child(1) {
-				width: 60px;
-				height: 60px;
-				top: 20%;
-				left: 10%;
+				width: 120px;
+				height: 120px;
+				top: 15%;
+				left: 8%;
 				animation-delay: 0s;
+				animation-duration: 25s;
 			}
 
 			.floating-element:nth-child(2) {
-				width: 80px;
-				height: 80px;
-				top: 60%;
-				right: 10%;
-				animation-delay: -5s;
+				width: 160px;
+				height: 160px;
+				top: 55%;
+				right: 8%;
+				animation-delay: -8s;
+				animation-duration: 30s;
 			}
 
 			.floating-element:nth-child(3) {
-				width: 40px;
-				height: 40px;
-				top: 80%;
-				left: 20%;
-				animation-delay: -10s;
+				width: 80px;
+				height: 80px;
+				top: 75%;
+				left: 15%;
+				animation-delay: -15s;
+				animation-duration: 22s;
 			}
 
-			@keyframes float-random {
+			.floating-element:nth-child(4) {
+				width: 100px;
+				height: 100px;
+				top: 25%;
+				right: 20%;
+				animation-delay: -5s;
+				animation-duration: 28s;
+			}
+
+			.floating-element:nth-child(5) {
+				width: 60px;
+				height: 60px;
+				top: 65%;
+				left: 5%;
+				animation-delay: -12s;
+				animation-duration: 18s;
+			}
+
+			@keyframes float-elegant {
 				0%,
 				100% {
-					transform: translateY(0px) translateX(0px) rotate(0deg);
+					transform: translateY(0px) translateX(0px) rotate(0deg) scale(1);
+					opacity: 0.6;
 				}
 				25% {
-					transform: translateY(-30px) translateX(20px) rotate(90deg);
+					transform: translateY(-25px) translateX(15px) rotate(5deg) scale(1.05);
+					opacity: 0.8;
 				}
 				50% {
-					transform: translateY(-15px) translateX(-10px) rotate(180deg);
+					transform: translateY(-10px) translateX(-8px) rotate(-3deg)
+						scale(0.95);
+					opacity: 0.4;
 				}
 				75% {
-					transform: translateY(-40px) translateX(15px) rotate(270deg);
+					transform: translateY(-35px) translateX(10px) rotate(8deg) scale(1.1);
+					opacity: 0.7;
+				}
+			}
+
+			@media (max-width: 768px) {
+				.floating-element:nth-child(1) {
+					width: 80px;
+					height: 80px;
+					top: 10%;
+					left: 5%;
+				}
+
+				.floating-element:nth-child(2) {
+					width: 100px;
+					height: 100px;
+					top: 60%;
+					right: 5%;
+				}
+
+				.floating-element:nth-child(3) {
+					width: 60px;
+					height: 60px;
+					top: 80%;
+					left: 10%;
+				}
+
+				.floating-element:nth-child(4) {
+					width: 70px;
+					height: 70px;
+					top: 20%;
+					right: 15%;
+				}
+
+				.floating-element:nth-child(5) {
+					width: 50px;
+					height: 50px;
+					top: 70%;
+					left: 3%;
+				}
+			}
+
+			@media (max-width: 480px) {
+				.floating-elements {
+					display: none;
 				}
 			}
 
@@ -1772,30 +1931,35 @@
 				font-size: 1.1rem;
 			}
 
-			/* Image Slider */
+			/* Enhanced Image Slider - Mobile Responsive */
 			.image-slider {
 				position: relative;
 				margin: 0 auto;
 				max-width: 1000px;
+				border-radius: var(--radius-2xl);
+				overflow: hidden;
+				box-shadow: var(--shadow-xl);
 			}
 
 			.slider-container {
 				position: relative;
 				overflow: hidden;
-				border-radius: 25px;
-				box-shadow: var(--shadow-strong);
+				border-radius: var(--radius-2xl);
+				background: var(--neutral-white);
 			}
 
 			.slider-track {
 				display: flex;
-				transition: transform 0.5s ease-in-out;
+				transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 			}
 
 			.slide {
 				flex: 0 0 100%;
-				height: 600px;
+				height: 500px;
 				position: relative;
 				display: none;
+				cursor: pointer;
+				overflow: hidden;
 			}
 
 			.slide.active {
@@ -1806,11 +1970,11 @@
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
-				transition: transform 0.3s ease;
+				transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 			}
 
 			.slide:hover img {
-				transform: scale(1.05);
+				transform: scale(1.08);
 			}
 
 			/* Slide Overlay */
@@ -1819,11 +1983,12 @@
 				bottom: 0;
 				left: 0;
 				right: 0;
-				background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+				background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
 				color: white;
-				padding: 2rem 1.5rem 1.5rem;
+				padding: var(--space-8) var(--space-6) var(--space-6);
 				transform: translateY(100%);
-				transition: transform 0.3s ease;
+				transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+				backdrop-filter: blur(10px);
 			}
 
 			.slide.active .slide-overlay {
@@ -1832,15 +1997,17 @@
 
 			.slide-overlay h4 {
 				font-family: "Playfair Display", serif;
-				font-size: 1.4rem;
-				margin-bottom: 0.5rem;
+				font-size: var(--font-size-xl);
+				margin-bottom: var(--space-2);
 				font-weight: 600;
+				line-height: 1.2;
 			}
 
 			.slide-overlay p {
-				font-size: 1rem;
+				font-size: var(--font-size-base);
 				opacity: 0.9;
 				margin: 0;
+				line-height: 1.5;
 			}
 
 			/* Slider Controls */
@@ -1848,82 +2015,208 @@
 				position: absolute;
 				top: 50%;
 				transform: translateY(-50%);
-				background: rgba(212, 175, 55, 0.9);
+				background: rgba(212, 175, 55, 0.95);
 				color: var(--primary-deep);
 				border: none;
-				width: 50px;
-				height: 50px;
+				width: 56px;
+				height: 56px;
 				border-radius: 50%;
 				cursor: pointer;
-				font-size: 1.2rem;
-				transition: all 0.3s ease;
+				font-size: var(--font-size-lg);
+				transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 				z-index: 10;
-				backdrop-filter: blur(10px);
+				backdrop-filter: blur(15px);
+				box-shadow: var(--shadow-lg);
+				border: 2px solid rgba(255, 255, 255, 0.2);
 			}
 
 			.slider-btn:hover {
 				background: var(--primary-gold);
 				transform: translateY(-50%) scale(1.1);
+				box-shadow: var(--shadow-xl);
+			}
+
+			.slider-btn:active {
+				transform: translateY(-50%) scale(0.95);
 			}
 
 			.prev-btn {
-				left: 20px;
+				left: var(--space-4);
 			}
 
 			.next-btn {
-				right: 20px;
+				right: var(--space-4);
 			}
 
 			/* Slider Dots */
 			.slider-dots {
 				position: absolute;
-				bottom: 20px;
+				bottom: var(--space-6);
 				left: 50%;
 				transform: translateX(-50%);
 				display: flex;
-				gap: 10px;
+				gap: var(--space-2);
 				z-index: 10;
+				padding: var(--space-2);
+				background: rgba(0, 0, 0, 0.3);
+				border-radius: var(--radius-full);
+				backdrop-filter: blur(10px);
 			}
 
 			.dot {
 				width: 12px;
 				height: 12px;
 				border-radius: 50%;
-				background: rgba(255, 255, 255, 0.5);
+				background: rgba(255, 255, 255, 0.6);
 				cursor: pointer;
-				transition: all 0.3s ease;
+				transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+				border: 2px solid transparent;
 			}
 
 			.dot.active {
 				background: var(--primary-gold);
-				transform: scale(1.2);
+				transform: scale(1.3);
+				border-color: rgba(255, 255, 255, 0.8);
 			}
 
 			.dot:hover {
 				background: var(--primary-gold);
+				transform: scale(1.2);
 			}
 
 			/* Auto Play Button */
 			.auto-play-btn {
 				position: absolute;
-				top: 20px;
-				right: 20px;
-				background: rgba(0, 0, 0, 0.7);
+				top: var(--space-4);
+				right: var(--space-4);
+				background: rgba(0, 0, 0, 0.8);
 				color: white;
 				border: none;
-				width: 40px;
-				height: 40px;
+				width: 48px;
+				height: 48px;
 				border-radius: 50%;
 				cursor: pointer;
-				font-size: 1rem;
-				transition: all 0.3s ease;
+				font-size: var(--font-size-base);
+				transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 				z-index: 10;
-				backdrop-filter: blur(10px);
+				backdrop-filter: blur(15px);
+				box-shadow: var(--shadow-md);
+				border: 1px solid rgba(255, 255, 255, 0.2);
 			}
 
 			.auto-play-btn:hover {
 				background: rgba(0, 0, 0, 0.9);
 				transform: scale(1.1);
+				box-shadow: var(--shadow-lg);
+			}
+
+			/* Mobile Responsive */
+			@media (max-width: 768px) {
+				.image-slider {
+					max-width: 100%;
+					margin: 0 var(--space-3);
+					border-radius: var(--radius-xl);
+				}
+
+				.slider-container {
+					border-radius: var(--radius-xl);
+				}
+
+				.slide {
+					height: 350px;
+				}
+
+				.slide-overlay {
+					padding: var(--space-6) var(--space-4) var(--space-4);
+				}
+
+				.slide-overlay h4 {
+					font-size: var(--font-size-lg);
+				}
+
+				.slide-overlay p {
+					font-size: var(--font-size-sm);
+				}
+
+				.slider-btn {
+					width: 48px;
+					height: 48px;
+					font-size: var(--font-size-base);
+				}
+
+				.prev-btn {
+					left: var(--space-2);
+				}
+
+				.next-btn {
+					right: var(--space-2);
+				}
+
+				.slider-dots {
+					bottom: var(--space-4);
+					gap: var(--space-1);
+				}
+
+				.dot {
+					width: 10px;
+					height: 10px;
+				}
+
+				.auto-play-btn {
+					width: 40px;
+					height: 40px;
+					font-size: var(--font-size-sm);
+					top: var(--space-2);
+					right: var(--space-2);
+				}
+			}
+
+			@media (max-width: 480px) {
+				.image-slider {
+					margin: 0 var(--space-2);
+					border-radius: var(--radius-lg);
+				}
+
+				.slider-container {
+					border-radius: var(--radius-lg);
+				}
+
+				.slide {
+					height: 280px;
+				}
+
+				.slide-overlay {
+					padding: var(--space-4) var(--space-3) var(--space-3);
+				}
+
+				.slide-overlay h4 {
+					font-size: var(--font-size-base);
+				}
+
+				.slide-overlay p {
+					font-size: var(--font-size-xs);
+				}
+
+				.slider-btn {
+					width: 40px;
+					height: 40px;
+					font-size: var(--font-size-sm);
+				}
+
+				.slider-dots {
+					bottom: var(--space-3);
+				}
+
+				.dot {
+					width: 8px;
+					height: 8px;
+				}
+
+				.auto-play-btn {
+					width: 36px;
+					height: 36px;
+					font-size: var(--font-size-xs);
+				}
 			}
 
 			/* Gallery Section */
@@ -2525,6 +2818,496 @@
 
 				.whatsapp-float i {
 					font-size: var(--font-size-lg);
+				}
+			}
+
+			/* WhatsApp Popup Modal Styles */
+			.whatsapp-popup-overlay {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: rgba(0, 0, 0, 0.5);
+				backdrop-filter: blur(5px);
+				z-index: var(--z-modal);
+				display: none;
+				align-items: center;
+				justify-content: center;
+				padding: var(--space-4);
+			}
+
+			.whatsapp-popup-overlay.active {
+				display: flex;
+				animation: fadeIn 0.3s ease;
+			}
+
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+				}
+				to {
+					opacity: 1;
+				}
+			}
+
+			.whatsapp-popup {
+				background: white;
+				border-radius: var(--radius-2xl);
+				width: 100%;
+				max-width: 400px;
+				max-height: 80vh;
+				overflow: hidden;
+				box-shadow: var(--shadow-xl);
+				animation: slideUp 0.3s ease;
+			}
+
+			@keyframes slideUp {
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			.whatsapp-popup-header {
+				background: #25d366;
+				color: white;
+				padding: var(--space-4) var(--space-6);
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+			}
+
+			.whatsapp-popup-title {
+				display: flex;
+				align-items: center;
+				gap: var(--space-2);
+				font-weight: 600;
+				font-size: var(--font-size-lg);
+			}
+
+			.whatsapp-popup-title i {
+				font-size: var(--font-size-xl);
+			}
+
+			.whatsapp-popup-close {
+				background: none;
+				border: none;
+				color: white;
+				font-size: var(--font-size-xl);
+				cursor: pointer;
+				padding: var(--space-2);
+				border-radius: var(--radius-md);
+				transition: all var(--transition-base);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 40px;
+				height: 40px;
+			}
+
+			.whatsapp-popup-close:hover {
+				background: rgba(255, 255, 255, 0.2);
+				transform: scale(1.1);
+			}
+
+			.whatsapp-popup-content {
+				padding: var(--space-6);
+			}
+
+			.whatsapp-popup-message {
+				margin-bottom: var(--space-6);
+				text-align: center;
+			}
+
+			.whatsapp-popup-message p {
+				margin-bottom: var(--space-2);
+				color: var(--text-dark);
+				font-size: var(--font-size-base);
+				line-height: 1.5;
+			}
+
+			.whatsapp-popup-options {
+				display: flex;
+				flex-direction: column;
+				gap: var(--space-3);
+				margin-bottom: var(--space-6);
+			}
+
+			.whatsapp-option {
+				background: var(--neutral-light);
+				border: 1px solid rgba(0, 0, 0, 0.1);
+				border-radius: var(--radius-lg);
+				padding: var(--space-3) var(--space-4);
+				font-size: var(--font-size-sm);
+				cursor: pointer;
+				transition: all var(--transition-base);
+				text-align: left;
+				color: var(--text-dark);
+			}
+
+			.whatsapp-option:hover {
+				background: var(--primary-gold);
+				color: var(--primary-deep);
+				transform: translateY(-1px);
+				box-shadow: var(--shadow-sm);
+			}
+
+			.whatsapp-popup-footer {
+				text-align: center;
+			}
+
+			.whatsapp-popup-cta {
+				background: #25d366;
+				color: white;
+				border: none;
+				border-radius: var(--radius-full);
+				padding: var(--space-4) var(--space-8);
+				font-size: var(--font-size-base);
+				font-weight: 600;
+				cursor: pointer;
+				transition: all var(--transition-base);
+				display: inline-flex;
+				align-items: center;
+				gap: var(--space-2);
+				min-height: 48px;
+			}
+
+			.whatsapp-popup-cta:hover {
+				background: #128c7e;
+				transform: translateY(-2px);
+				box-shadow: var(--shadow-md);
+			}
+
+			@media (max-width: 480px) {
+				.whatsapp-popup-overlay {
+					padding: var(--space-3);
+				}
+
+				.whatsapp-popup {
+					max-height: 85vh;
+				}
+
+				.whatsapp-popup-header {
+					padding: var(--space-3) var(--space-4);
+				}
+
+				.whatsapp-popup-title {
+					font-size: var(--font-size-base);
+				}
+
+				.whatsapp-popup-content {
+					padding: var(--space-4);
+				}
+
+				.whatsapp-popup-message p {
+					font-size: var(--font-size-sm);
+				}
+
+				.whatsapp-option {
+					padding: var(--space-2) var(--space-3);
+					font-size: var(--font-size-xs);
+				}
+
+				.whatsapp-popup-cta {
+					padding: var(--space-3) var(--space-6);
+					font-size: var(--font-size-sm);
+					min-height: 44px;
+				}
+			}
+
+			/* Gallery Modal Styles */
+			.gallery-modal-overlay {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: rgba(0, 0, 0, 0.95);
+				display: none;
+				align-items: center;
+				justify-content: center;
+				z-index: var(--z-modal);
+				backdrop-filter: blur(10px);
+				padding: var(--space-4);
+			}
+
+			.gallery-modal-overlay.active {
+				display: flex;
+			}
+
+			.gallery-modal {
+				background: var(--neutral-white);
+				border-radius: var(--radius-2xl);
+				max-width: 90vw;
+				max-height: 90vh;
+				width: 100%;
+				overflow: hidden;
+				box-shadow: var(--shadow-2xl);
+				position: relative;
+			}
+
+			.gallery-modal-header {
+				position: absolute;
+				top: var(--space-4);
+				right: var(--space-4);
+				z-index: 20;
+			}
+
+			.gallery-modal-close {
+				background: rgba(0, 0, 0, 0.8);
+				color: white;
+				border: none;
+				width: 48px;
+				height: 48px;
+				border-radius: 50%;
+				cursor: pointer;
+				font-size: var(--font-size-lg);
+				transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+				backdrop-filter: blur(15px);
+				box-shadow: var(--shadow-lg);
+			}
+
+			.gallery-modal-close:hover {
+				background: rgba(0, 0, 0, 0.9);
+				transform: scale(1.1);
+			}
+
+			.gallery-modal-content {
+				display: flex;
+				flex-direction: column;
+				height: 100%;
+			}
+
+			.gallery-modal-slider {
+				position: relative;
+				flex: 1;
+				min-height: 0;
+			}
+
+			.gallery-modal-track {
+				display: flex;
+				transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+				height: 100%;
+			}
+
+			.gallery-modal-slide {
+				flex: 0 0 100%;
+				position: relative;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: var(--space-8);
+			}
+
+			.gallery-modal-slide img {
+				max-width: 100%;
+				max-height: 100%;
+				object-fit: contain;
+				border-radius: var(--radius-lg);
+				box-shadow: var(--shadow-xl);
+			}
+
+			.gallery-modal-btn {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				background: rgba(212, 175, 55, 0.95);
+				color: var(--primary-deep);
+				border: none;
+				width: 56px;
+				height: 56px;
+				border-radius: 50%;
+				cursor: pointer;
+				font-size: var(--font-size-lg);
+				transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+				z-index: 15;
+				backdrop-filter: blur(15px);
+				box-shadow: var(--shadow-lg);
+				border: 2px solid rgba(255, 255, 255, 0.2);
+			}
+
+			.gallery-modal-btn:hover {
+				background: var(--primary-gold);
+				transform: translateY(-50%) scale(1.1);
+				box-shadow: var(--shadow-xl);
+			}
+
+			.gallery-modal-btn.prev-btn {
+				left: var(--space-4);
+			}
+
+			.gallery-modal-btn.next-btn {
+				right: var(--space-4);
+			}
+
+			.gallery-modal-dots {
+				position: absolute;
+				bottom: var(--space-6);
+				left: 50%;
+				transform: translateX(-50%);
+				display: flex;
+				gap: var(--space-2);
+				z-index: 15;
+				padding: var(--space-2);
+				background: rgba(0, 0, 0, 0.3);
+				border-radius: var(--radius-full);
+				backdrop-filter: blur(10px);
+			}
+
+			.gallery-modal-dot {
+				width: 12px;
+				height: 12px;
+				border-radius: 50%;
+				background: rgba(255, 255, 255, 0.6);
+				cursor: pointer;
+				transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+				border: 2px solid transparent;
+			}
+
+			.gallery-modal-dot.active {
+				background: var(--primary-gold);
+				transform: scale(1.3);
+				border-color: rgba(255, 255, 255, 0.8);
+			}
+
+			.gallery-modal-dot:hover {
+				background: var(--primary-gold);
+				transform: scale(1.2);
+			}
+
+			.gallery-modal-info {
+				background: var(--neutral-white);
+				padding: var(--space-6);
+				border-top: 1px solid var(--neutral-light);
+			}
+
+			.gallery-modal-info h3 {
+				font-family: "Playfair Display", serif;
+				font-size: var(--font-size-xl);
+				font-weight: 600;
+				color: var(--text-dark);
+				margin-bottom: var(--space-2);
+				line-height: 1.2;
+			}
+
+			.gallery-modal-info p {
+				font-size: var(--font-size-base);
+				color: var(--text-light);
+				line-height: 1.5;
+				margin: 0;
+			}
+
+			/* Mobile Responsive for Gallery Modal */
+			@media (max-width: 768px) {
+				.gallery-modal {
+					max-width: 95vw;
+					max-height: 95vh;
+					border-radius: var(--radius-xl);
+				}
+
+				.gallery-modal-header {
+					top: var(--space-2);
+					right: var(--space-2);
+				}
+
+				.gallery-modal-close {
+					width: 40px;
+					height: 40px;
+					font-size: var(--font-size-base);
+				}
+
+				.gallery-modal-slide {
+					padding: var(--space-4);
+				}
+
+				.gallery-modal-btn {
+					width: 48px;
+					height: 48px;
+					font-size: var(--font-size-base);
+				}
+
+				.gallery-modal-btn.prev-btn {
+					left: var(--space-2);
+				}
+
+				.gallery-modal-btn.next-btn {
+					right: var(--space-2);
+				}
+
+				.gallery-modal-dots {
+					bottom: var(--space-4);
+					gap: var(--space-1);
+				}
+
+				.gallery-modal-dot {
+					width: 10px;
+					height: 10px;
+				}
+
+				.gallery-modal-info {
+					padding: var(--space-4);
+				}
+
+				.gallery-modal-info h3 {
+					font-size: var(--font-size-lg);
+				}
+
+				.gallery-modal-info p {
+					font-size: var(--font-size-sm);
+				}
+			}
+
+			@media (max-width: 480px) {
+				.gallery-modal-overlay {
+					padding: var(--space-2);
+				}
+
+				.gallery-modal {
+					max-width: 98vw;
+					max-height: 98vh;
+					border-radius: var(--radius-lg);
+				}
+
+				.gallery-modal-close {
+					width: 36px;
+					height: 36px;
+					font-size: var(--font-size-sm);
+				}
+
+				.gallery-modal-slide {
+					padding: var(--space-2);
+				}
+
+				.gallery-modal-btn {
+					width: 40px;
+					height: 40px;
+					font-size: var(--font-size-sm);
+				}
+
+				.gallery-modal-dots {
+					bottom: var(--space-3);
+				}
+
+				.gallery-modal-dot {
+					width: 8px;
+					height: 8px;
+				}
+
+				.gallery-modal-info {
+					padding: var(--space-3);
+				}
+
+				.gallery-modal-info h3 {
+					font-size: var(--font-size-base);
+				}
+
+				.gallery-modal-info p {
+					font-size: var(--font-size-xs);
 				}
 			}
 
@@ -3242,11 +4025,11 @@
 							class="nav-phone"
 							><i class="fas fa-phone"></i> +91 76270 57190</a
 						>
-						<a
-							href="https://wa.me/917627057190"
+						<button
 							class="nav-whatsapp"
-							><i class="fab fa-whatsapp"></i> Get Free Quote</a
-						>
+							onclick="openWhatsAppPopup()">
+							<i class="fab fa-whatsapp"></i> Get Free Quote
+						</button>
 					</div>
 				</div>
 			</div>
@@ -3258,6 +4041,8 @@
 		<!-- Hero Section -->
 		<section class="hero">
 			<div class="floating-elements">
+				<div class="floating-element"></div>
+				<div class="floating-element"></div>
 				<div class="floating-element"></div>
 				<div class="floating-element"></div>
 				<div class="floating-element"></div>
@@ -3300,11 +4085,11 @@
 								class="btn-primary">
 								<i class="fas fa-phone"></i> Call Now - Get 30% OFF
 							</a>
-							<a
-								href="https://wa.me/917627057190"
-								class="btn-secondary">
+							<button
+								class="btn-secondary"
+								onclick="openWhatsAppPopup()">
 								<i class="fab fa-whatsapp"></i> Free Quote
-							</a>
+							</button>
 						</div>
 						<div class="social-proof">
 							<i class="fas fa-check-circle"></i>
@@ -3343,81 +4128,6 @@
 									src="images/Anniversary2.jpeg"
 									alt="Balloon Anniversary Noida" />
 							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<!-- Authority Section -->
-		<section class="authority section">
-			<div class="container">
-				<div class="authority-content">
-					<div class="authority-text">
-						<h3>
-							Why 1000+ Families Choose Balloon Decoration Noida as Their
-							Trusted Partner
-						</h3>
-						<p>
-							For over 5 years, we've been transforming ordinary spaces into
-							extraordinary experiences. Our master decorators combine artistic
-							vision with flawless execution to create celebrations that your
-							guests will talk about for years.
-						</p>
-						<div class="credentials">
-							<div class="credential-item">
-								<div class="credential-icon">
-									<i class="fas fa-award"></i>
-								</div>
-								<div class="credential-text">
-									<h4>Certified Professionals</h4>
-									<p>Licensed & Insured Team</p>
-								</div>
-							</div>
-							<div class="credential-item">
-								<div class="credential-icon">
-									<i class="fas fa-medal"></i>
-								</div>
-								<div class="credential-text">
-									<h4>Industry Leaders</h4>
-									<p>5+ Years Excellence</p>
-								</div>
-							</div>
-							<div class="credential-item">
-								<div class="credential-icon">
-									<i class="fas fa-shield-alt"></i>
-								</div>
-								<div class="credential-text">
-									<h4>Money-Back Guarantee</h4>
-									<p>100% Satisfaction Promise</p>
-								</div>
-							</div>
-							<div class="credential-item">
-								<div class="credential-icon">
-									<i class="fas fa-clock"></i>
-								</div>
-								<div class="credential-text">
-									<h4>On-Time Delivery</h4>
-									<p>Never Late, Always Ready</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="stats-grid">
-						<div class="stat-card">
-							<div class="stat-number">1000+</div>
-							<div class="stat-label">Happy Families</div>
-							<div class="stat-sublabel">Across Noida & Delhi</div>
-						</div>
-						<div class="stat-card">
-							<div class="stat-number">4.9</div>
-							<div class="stat-label">Star Rating</div>
-							<div class="stat-sublabel">Google Reviews</div>
-						</div>
-						<div class="stat-card">
-							<div class="stat-number">100%</div>
-							<div class="stat-label">On-Time Setup</div>
-							<div class="stat-sublabel">Never Late</div>
 						</div>
 					</div>
 				</div>
@@ -3843,105 +4553,76 @@
 				</div>
 			</div>
 		</section>
-
-		<!-- Social Proof Section -->
-		<section
-			class="social-proof-section section"
-			id="testimonials">
+		<!-- Authority Section -->
+		<section class="authority section">
 			<div class="container">
-				<div class="section-header">
-					<div class="section-pretitle">Customer Love</div>
-					<h2 class="section-title">1000+ Families Can't Be Wrong</h2>
-					<p class="section-subtitle">
-						See why families across Noida & Delhi trust Balloon Decoration Noida
-						for their most important celebrations.
-					</p>
-				</div>
-				<div class="testimonials-grid">
-					<div class="testimonial-card">
-						<div class="testimonial-rating">
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-						</div>
-						<p class="testimonial-text">
-							"Balloon Decoration Noida turned my daughter's 5th birthday into a
-							fairy tale! The attention to detail was incredible, and the setup
-							was completed exactly on time. Worth every penny!"
+				<div class="authority-content">
+					<div class="authority-text">
+						<h3>
+							Why 1000+ Families Choose Balloon Decoration Noida as Their
+							Trusted Partner
+						</h3>
+						<p>
+							For over 5 years, we've been transforming ordinary spaces into
+							extraordinary experiences. Our master decorators combine artistic
+							vision with flawless execution to create celebrations that your
+							guests will talk about for years.
 						</p>
-						<div class="testimonial-author">
-							<div class="testimonial-avatar">P</div>
-							<div class="testimonial-info">
-								<h4>Priya Sharma</h4>
-								<p>Noida • Birthday Party</p>
+						<div class="credentials">
+							<div class="credential-item">
+								<div class="credential-icon">
+									<i class="fas fa-award"></i>
+								</div>
+								<div class="credential-text">
+									<h4>Certified Professionals</h4>
+									<p>Licensed & Insured Team</p>
+								</div>
+							</div>
+							<div class="credential-item">
+								<div class="credential-icon">
+									<i class="fas fa-medal"></i>
+								</div>
+								<div class="credential-text">
+									<h4>Industry Leaders</h4>
+									<p>5+ Years Excellence</p>
+								</div>
+							</div>
+							<div class="credential-item">
+								<div class="credential-icon">
+									<i class="fas fa-shield-alt"></i>
+								</div>
+								<div class="credential-text">
+									<h4>Money-Back Guarantee</h4>
+									<p>100% Satisfaction Promise</p>
+								</div>
+							</div>
+							<div class="credential-item">
+								<div class="credential-icon">
+									<i class="fas fa-clock"></i>
+								</div>
+								<div class="credential-text">
+									<h4>On-Time Delivery</h4>
+									<p>Never Late, Always Ready</p>
+								</div>
 							</div>
 						</div>
 					</div>
-
-					<div class="testimonial-card">
-						<div class="testimonial-rating">
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
+					<div class="stats-grid">
+						<div class="stat-card">
+							<div class="stat-number">1000+</div>
+							<div class="stat-label">Happy Families</div>
+							<div class="stat-sublabel">Across Noida & Delhi</div>
 						</div>
-						<p class="testimonial-text">
-							"Our wedding looked like something from a magazine! The team was
-							professional, creative, and made our dream come true. Highly
-							recommended!"
-						</p>
-						<div class="testimonial-author">
-							<div class="testimonial-avatar">R</div>
-							<div class="testimonial-info">
-								<h4>Rahul & Neha</h4>
-								<p>Delhi • Wedding</p>
-							</div>
+						<div class="stat-card">
+							<div class="stat-number">4.9</div>
+							<div class="stat-label">Star Rating</div>
+							<div class="stat-sublabel">Google Reviews</div>
 						</div>
-					</div>
-
-					<div class="testimonial-card">
-						<div class="testimonial-rating">
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
+						<div class="stat-card">
+							<div class="stat-number">100%</div>
+							<div class="stat-label">On-Time Setup</div>
+							<div class="stat-sublabel">Never Late</div>
 						</div>
-						<p class="testimonial-text">
-							"Last-minute booking for our anniversary and they delivered beyond
-							expectations! The decoration was elegant and perfectly matched our
-							vision."
-						</p>
-						<div class="testimonial-author">
-							<div class="testimonial-avatar">A</div>
-							<div class="testimonial-info">
-								<h4>Amit Gupta</h4>
-								<p>Noidaß • Anniversary</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="trust-badges">
-					<div class="trust-badge">
-						<div class="trust-badge-icon">
-							<i class="fas fa-shield-alt"></i>
-						</div>
-						<div class="trust-badge-text">Money-Back Guarantee</div>
-					</div>
-					<div class="trust-badge">
-						<div class="trust-badge-icon">
-							<i class="fas fa-clock"></i>
-						</div>
-						<div class="trust-badge-text">On-Time Delivery</div>
-					</div>
-					<div class="trust-badge">
-						<div class="trust-badge-icon">
-							<i class="fas fa-award"></i>
-						</div>
-						<div class="trust-badge-text">Premium Quality</div>
 					</div>
 				</div>
 			</div>
@@ -4744,6 +5425,183 @@
 			</div>
 		</section>
 
+		<!-- Authority Section -->
+		<section class="authority section">
+			<div class="container">
+				<div class="authority-content">
+					<div class="authority-text">
+						<h3>
+							Why 1000+ Families Choose Balloon Decoration Noida as Their
+							Trusted Partner
+						</h3>
+						<p>
+							For over 5 years, we've been transforming ordinary spaces into
+							extraordinary experiences. Our master decorators combine artistic
+							vision with flawless execution to create celebrations that your
+							guests will talk about for years.
+						</p>
+						<div class="credentials">
+							<div class="credential-item">
+								<div class="credential-icon">
+									<i class="fas fa-award"></i>
+								</div>
+								<div class="credential-text">
+									<h4>Certified Professionals</h4>
+									<p>Licensed & Insured Team</p>
+								</div>
+							</div>
+							<div class="credential-item">
+								<div class="credential-icon">
+									<i class="fas fa-medal"></i>
+								</div>
+								<div class="credential-text">
+									<h4>Industry Leaders</h4>
+									<p>5+ Years Excellence</p>
+								</div>
+							</div>
+							<div class="credential-item">
+								<div class="credential-icon">
+									<i class="fas fa-shield-alt"></i>
+								</div>
+								<div class="credential-text">
+									<h4>Money-Back Guarantee</h4>
+									<p>100% Satisfaction Promise</p>
+								</div>
+							</div>
+							<div class="credential-item">
+								<div class="credential-icon">
+									<i class="fas fa-clock"></i>
+								</div>
+								<div class="credential-text">
+									<h4>On-Time Delivery</h4>
+									<p>Never Late, Always Ready</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="stats-grid">
+						<div class="stat-card">
+							<div class="stat-number">1000+</div>
+							<div class="stat-label">Happy Families</div>
+							<div class="stat-sublabel">Across Noida & Delhi</div>
+						</div>
+						<div class="stat-card">
+							<div class="stat-number">4.9</div>
+							<div class="stat-label">Star Rating</div>
+							<div class="stat-sublabel">Google Reviews</div>
+						</div>
+						<div class="stat-card">
+							<div class="stat-number">100%</div>
+							<div class="stat-label">On-Time Setup</div>
+							<div class="stat-sublabel">Never Late</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Social Proof Section -->
+		<section
+			class="social-proof-section section"
+			id="testimonials">
+			<div class="container">
+				<div class="section-header">
+					<div class="section-pretitle">Customer Love</div>
+					<h2 class="section-title">1000+ Families Can't Be Wrong</h2>
+					<p class="section-subtitle">
+						See why families across Noida & Delhi trust Balloon Decoration Noida
+						for their most important celebrations.
+					</p>
+				</div>
+				<div class="testimonials-grid">
+					<div class="testimonial-card">
+						<div class="testimonial-rating">
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+						</div>
+						<p class="testimonial-text">
+							"Balloon Decoration Noida turned my daughter's 5th birthday into a
+							fairy tale! The attention to detail was incredible, and the setup
+							was completed exactly on time. Worth every penny!"
+						</p>
+						<div class="testimonial-author">
+							<div class="testimonial-avatar">P</div>
+							<div class="testimonial-info">
+								<h4>Priya Sharma</h4>
+								<p>Noida • Birthday Party</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="testimonial-card">
+						<div class="testimonial-rating">
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+						</div>
+						<p class="testimonial-text">
+							"Our wedding looked like something from a magazine! The team was
+							professional, creative, and made our dream come true. Highly
+							recommended!"
+						</p>
+						<div class="testimonial-author">
+							<div class="testimonial-avatar">R</div>
+							<div class="testimonial-info">
+								<h4>Rahul & Neha</h4>
+								<p>Delhi • Wedding</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="testimonial-card">
+						<div class="testimonial-rating">
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+						</div>
+						<p class="testimonial-text">
+							"Last-minute booking for our anniversary and they delivered beyond
+							expectations! The decoration was elegant and perfectly matched our
+							vision."
+						</p>
+						<div class="testimonial-author">
+							<div class="testimonial-avatar">A</div>
+							<div class="testimonial-info">
+								<h4>Amit Gupta</h4>
+								<p>Noidaß • Anniversary</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="trust-badges">
+					<div class="trust-badge">
+						<div class="trust-badge-icon">
+							<i class="fas fa-shield-alt"></i>
+						</div>
+						<div class="trust-badge-text">Money-Back Guarantee</div>
+					</div>
+					<div class="trust-badge">
+						<div class="trust-badge-icon">
+							<i class="fas fa-clock"></i>
+						</div>
+						<div class="trust-badge-text">On-Time Delivery</div>
+					</div>
+					<div class="trust-badge">
+						<div class="trust-badge-icon">
+							<i class="fas fa-award"></i>
+						</div>
+						<div class="trust-badge-text">Premium Quality</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
 		<!-- Contact Section -->
 		<section
 			class="contact section"
@@ -4810,39 +5668,6 @@
 			</div>
 		</section>
 
-		<!-- Final CTA Section -->
-		<section class="final-cta section">
-			<div class="container">
-				<div class="final-cta-content">
-					<h2 class="final-cta-title">Ready to Create Your Magic?</h2>
-					<p class="final-cta-subtitle">
-						Don't let your special moment be ordinary. Join 1000+ families who
-						made their celebrations extraordinary.
-					</p>
-					<div class="final-cta-buttons">
-						<a
-							href="tel:+917627057190"
-							class="btn-final-primary">
-							<i class="fas fa-phone"></i> Call Now & Save 30%
-						</a>
-						<a
-							href="https://wa.me/917627057190"
-							class="btn-final-secondary">
-							<i class="fab fa-whatsapp"></i> Get Free Quote
-						</a>
-					</div>
-					<div class="final-guarantee">
-						<div class="guarantee-icon">
-							<i class="fas fa-shield-alt"></i>
-						</div>
-						<div class="guarantee-text">
-							100% Satisfaction Guarantee - Love it or your money back!
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
 		<!-- Footer -->
 		<footer class="footer">
 			<div class="container">
@@ -4899,12 +5724,114 @@
 		</footer>
 
 		<!-- Floating WhatsApp Button -->
-		<a
-			href="https://wa.me/917627057190"
+		<button
 			class="whatsapp-float"
-			target="_blank">
+			onclick="openWhatsAppPopup()">
 			<i class="fab fa-whatsapp"></i>
-		</a>
+		</button>
+
+		<!-- WhatsApp Popup Modal -->
+		<div
+			class="whatsapp-popup-overlay"
+			id="whatsappPopupOverlay">
+			<div class="whatsapp-popup">
+				<div class="whatsapp-popup-header">
+					<div class="whatsapp-popup-title">
+						<i class="fab fa-whatsapp"></i>
+						<span>Chat with us on WhatsApp</span>
+					</div>
+					<button
+						class="whatsapp-popup-close"
+						onclick="closeWhatsAppPopup()">
+						<i class="fas fa-times"></i>
+					</button>
+				</div>
+				<div class="whatsapp-popup-content">
+					<div class="whatsapp-popup-message">
+						<p>Hi! 👋 I'm here to help you plan your perfect celebration.</p>
+						<p>What's your special occasion?</p>
+					</div>
+					<div class="whatsapp-popup-options">
+						<button
+							class="whatsapp-option"
+							onclick="sendWhatsAppMessage('Hi! I need help with Birthday decoration')">
+							🎂 Birthday Party
+						</button>
+						<button
+							class="whatsapp-option"
+							onclick="sendWhatsAppMessage('Hi! I need help with Wedding decoration')">
+							💒 Wedding
+						</button>
+						<button
+							class="whatsapp-option"
+							onclick="sendWhatsAppMessage('Hi! I need help with Baby Shower decoration')">
+							👶 Baby Shower
+						</button>
+						<button
+							class="whatsapp-option"
+							onclick="sendWhatsAppMessage('Hi! I need help with Corporate event decoration')">
+							🏢 Corporate Event
+						</button>
+						<button
+							class="whatsapp-option"
+							onclick="sendWhatsAppMessage('Hi! I need a custom quote for decoration')">
+							💬 Custom Quote
+						</button>
+					</div>
+					<div class="whatsapp-popup-footer">
+						<button
+							class="whatsapp-popup-cta"
+							onclick="sendWhatsAppMessage('Hi! I would like to discuss decoration services')">
+							<i class="fab fa-whatsapp"></i>
+							Start Chat
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Gallery Modal -->
+		<div
+			class="gallery-modal-overlay"
+			id="galleryModalOverlay">
+			<div class="gallery-modal">
+				<div class="gallery-modal-header">
+					<button
+						class="gallery-modal-close"
+						onclick="closeGalleryModal()">
+						<i class="fas fa-times"></i>
+					</button>
+				</div>
+				<div class="gallery-modal-content">
+					<div class="gallery-modal-slider">
+						<div
+							class="gallery-modal-track"
+							id="galleryModalTrack">
+							<!-- Images will be dynamically inserted here -->
+						</div>
+						<button
+							class="gallery-modal-btn prev-btn"
+							onclick="changeModalSlide(-1)">
+							<i class="fas fa-chevron-left"></i>
+						</button>
+						<button
+							class="gallery-modal-btn next-btn"
+							onclick="changeModalSlide(1)">
+							<i class="fas fa-chevron-right"></i>
+						</button>
+						<div
+							class="gallery-modal-dots"
+							id="galleryModalDots">
+							<!-- Dots will be dynamically inserted here -->
+						</div>
+					</div>
+					<div class="gallery-modal-info">
+						<h3 id="galleryModalTitle">Image Title</h3>
+						<p id="galleryModalDescription">Image description</p>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<!-- Live Chat Popup -->
 		<div
@@ -5341,6 +6268,166 @@
 						hamburger.classList.remove("active");
 						navOverlay.classList.remove("active");
 						document.body.style.overflow = "";
+					}
+				});
+			});
+
+			// Gallery Modal Functionality
+			let currentModalImages = [];
+			let currentModalIndex = 0;
+
+			// Function to open gallery modal
+			function openGalleryModal(galleryType, imageIndex) {
+				const modalOverlay = document.getElementById("galleryModalOverlay");
+				const modalTrack = document.getElementById("galleryModalTrack");
+				const modalDots = document.getElementById("galleryModalDots");
+				const modalTitle = document.getElementById("galleryModalTitle");
+				const modalDescription = document.getElementById(
+					"galleryModalDescription"
+				);
+
+				// Get all images from the specific gallery
+				const gallery = document.querySelector(
+					`#gallery-${galleryType} .slider-track`
+				);
+				const slides = gallery.querySelectorAll(".slide");
+
+				// Clear previous content
+				modalTrack.innerHTML = "";
+				modalDots.innerHTML = "";
+
+				// Populate modal with images
+				currentModalImages = [];
+				slides.forEach((slide, index) => {
+					const img = slide.querySelector("img");
+					const overlay = slide.querySelector(".slide-overlay");
+
+					if (img) {
+						currentModalImages.push({
+							src: img.src,
+							alt: img.alt,
+							title: overlay
+								? overlay.querySelector("h4").textContent
+								: "Gallery Image",
+							description: overlay
+								? overlay.querySelector("p").textContent
+								: "",
+						});
+
+						// Create modal slide
+						const modalSlide = document.createElement("div");
+						modalSlide.className = "gallery-modal-slide";
+						modalSlide.innerHTML = `<img src="${img.src}" alt="${img.alt}">`;
+						modalTrack.appendChild(modalSlide);
+
+						// Create dot
+						const dot = document.createElement("span");
+						dot.className = `gallery-modal-dot ${
+							index === imageIndex ? "active" : ""
+						}`;
+						dot.onclick = () => goToModalSlide(index);
+						modalDots.appendChild(dot);
+					}
+				});
+
+				// Set current index
+				currentModalIndex = imageIndex;
+
+				// Update modal info
+				if (currentModalImages[currentModalIndex]) {
+					modalTitle.textContent = currentModalImages[currentModalIndex].title;
+					modalDescription.textContent =
+						currentModalImages[currentModalIndex].description;
+				}
+
+				// Show modal
+				modalOverlay.classList.add("active");
+				document.body.style.overflow = "hidden";
+			}
+
+			// Function to close gallery modal
+			function closeGalleryModal() {
+				const modalOverlay = document.getElementById("galleryModalOverlay");
+				modalOverlay.classList.remove("active");
+				document.body.style.overflow = "";
+			}
+
+			// Function to change modal slide
+			function changeModalSlide(direction) {
+				const newIndex = currentModalIndex + direction;
+
+				if (newIndex >= 0 && newIndex < currentModalImages.length) {
+					currentModalIndex = newIndex;
+					updateModalDisplay();
+				}
+			}
+
+			// Function to go to specific modal slide
+			function goToModalSlide(index) {
+				if (index >= 0 && index < currentModalImages.length) {
+					currentModalIndex = index;
+					updateModalDisplay();
+				}
+			}
+
+			// Function to update modal display
+			function updateModalDisplay() {
+				const modalTrack = document.getElementById("galleryModalTrack");
+				const modalDots = document.getElementById("galleryModalDots");
+				const modalTitle = document.getElementById("galleryModalTitle");
+				const modalDescription = document.getElementById(
+					"galleryModalDescription"
+				);
+
+				// Update track position
+				modalTrack.style.transform = `translateX(-${currentModalIndex * 100}%)`;
+
+				// Update dots
+				const dots = modalDots.querySelectorAll(".gallery-modal-dot");
+				dots.forEach((dot, index) => {
+					dot.classList.toggle("active", index === currentModalIndex);
+				});
+
+				// Update info
+				if (currentModalImages[currentModalIndex]) {
+					modalTitle.textContent = currentModalImages[currentModalIndex].title;
+					modalDescription.textContent =
+						currentModalImages[currentModalIndex].description;
+				}
+			}
+
+			// Add click event listeners to all gallery slides
+			document.addEventListener("DOMContentLoaded", function () {
+				const slides = document.querySelectorAll(".slide");
+				slides.forEach((slide, index) => {
+					slide.addEventListener("click", function () {
+						// Find which gallery this slide belongs to
+						const gallery = slide.closest(".service-gallery");
+						if (gallery) {
+							const galleryId = gallery.id;
+							const galleryType = galleryId.replace("gallery-", "");
+
+							// Find the index within this specific gallery
+							const gallerySlides = gallery.querySelectorAll(".slide");
+							const slideIndex = Array.from(gallerySlides).indexOf(slide);
+
+							openGalleryModal(galleryType, slideIndex);
+						}
+					});
+				});
+
+				// Close modal on overlay click
+				const modalOverlay = document.getElementById("galleryModalOverlay");
+				modalOverlay.addEventListener("click", function (e) {
+					if (e.target === modalOverlay) {
+						closeGalleryModal();
+					}
+				});
+
+				// Close modal on escape key
+				document.addEventListener("keydown", function (e) {
+					if (e.key === "Escape") {
+						closeGalleryModal();
 					}
 				});
 			});
