@@ -5,6 +5,44 @@
 		<meta
 			name="viewport"
 			content="width=device-width, initial-scale=1.0" />
+
+		<!-- Security Meta Tags -->
+		<meta
+			http-equiv="X-Content-Type-Options"
+			content="nosniff" />
+		<meta
+			http-equiv="X-Frame-Options"
+			content="DENY" />
+		<meta
+			http-equiv="X-XSS-Protection"
+			content="1; mode=block" />
+		<meta
+			http-equiv="Referrer-Policy"
+			content="strict-origin-when-cross-origin" />
+		<meta
+			http-equiv="Permissions-Policy"
+			content="geolocation=(), microphone=(), camera=()" />
+		<meta
+			name="robots"
+			content="noindex, nofollow" />
+
+		<!-- Content Security Policy -->
+		<meta
+			http-equiv="Content-Security-Policy"
+			content="
+			default-src 'self';
+			script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com;
+			style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+			font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+			img-src 'self' data: https: blob:;
+			connect-src 'self' https://www.google-analytics.com https://analytics.google.com;
+			frame-src 'none';
+			object-src 'none';
+			base-uri 'self';
+			form-action 'self';
+			upgrade-insecure-requests;
+		" />
+
 		<meta
 			name="description"
 			content="Noida & Delhi's #1 Balloon Decoration Service. Birthday, Anniversary, Baby Shower, Corporate, Custom Arches & Bouquets. Same-day setup, 1000+ happy clients." />
@@ -2899,6 +2937,74 @@
 				}
 			}
 
+			/* Floating Call Button */
+			.call-float {
+				position: fixed;
+				bottom: 90px;
+				right: 20px;
+				width: 60px;
+				height: 60px;
+				background: var(--primary-gold);
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				z-index: var(--z-fixed);
+				box-shadow: var(--shadow-lg);
+				transition: all var(--transition-base);
+				animation: pulse 2s infinite;
+				text-decoration: none;
+			}
+
+			.call-float:hover {
+				transform: scale(1.1);
+				box-shadow: 0 25px 70px rgba(212, 175, 55, 0.4);
+				background: var(--primary-deep);
+			}
+
+			.call-float i {
+				color: white;
+				font-size: var(--font-size-2xl);
+			}
+
+			@keyframes pulse {
+				0% {
+					box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+				}
+				70% {
+					box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+				}
+				100% {
+					box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+				}
+			}
+
+			@media (max-width: 768px) {
+				.call-float {
+					bottom: 85px;
+					right: 15px;
+					width: 56px;
+					height: 56px;
+				}
+
+				.call-float i {
+					font-size: var(--font-size-xl);
+				}
+			}
+
+			@media (max-width: 480px) {
+				.call-float {
+					bottom: 80px;
+					right: 10px;
+					width: 52px;
+					height: 52px;
+				}
+
+				.call-float i {
+					font-size: var(--font-size-lg);
+				}
+			}
+
 			/* Floating WhatsApp Button */
 			.whatsapp-float {
 				position: fixed;
@@ -4115,8 +4221,67 @@
 				border: 0;
 			}
 
+			/* Security and Form Validation Styles */
+			.error {
+				border-color: #e74c3c !important;
+				box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2) !important;
+			}
+
+			.error-message {
+				color: #e74c3c;
+				font-size: 0.875rem;
+				margin-top: 0.25rem;
+				display: block;
+			}
+
+			.security-notice {
+				background: rgba(212, 175, 55, 0.1);
+				border: 1px solid rgba(212, 175, 55, 0.3);
+				border-radius: 8px;
+				padding: 0.75rem;
+				margin: 1rem 0;
+				font-size: 0.875rem;
+				color: var(--text-dark);
+			}
+
+			.security-notice i {
+				color: var(--primary-gold);
+				margin-right: 0.5rem;
+			}
+
+			/* Secure form styling */
+			.secure-form {
+				position: relative;
+			}
+
+			.secure-form::before {
+				content: "🔒 Secure Form";
+				position: absolute;
+				top: -10px;
+				right: 10px;
+				background: var(--primary-gold);
+				color: var(--primary-deep);
+				padding: 0.25rem 0.5rem;
+				border-radius: 4px;
+				font-size: 0.75rem;
+				font-weight: 600;
+			}
+
+			/* Rate limit warning */
+			.rate-limit-warning {
+				background: rgba(231, 76, 60, 0.1);
+				border: 1px solid rgba(231, 76, 60, 0.3);
+				border-radius: 8px;
+				padding: 1rem;
+				margin: 1rem 0;
+				color: #e74c3c;
+				text-align: center;
+				font-weight: 600;
+			}
+
 			/* Print Styles */
 			@media print {
+				.call-float,
 				.whatsapp-float,
 				.live-chat-popup,
 				.notification-popup {
@@ -4589,7 +4754,7 @@
 						>
 						<button
 							class="nav-whatsapp"
-							onclick="openWhatsAppPopup()">
+							onclick="openWhatsAppPopupOriginal()">
 							<i class="fab fa-whatsapp"></i> Get Free Quote
 						</button>
 					</div>
@@ -4649,13 +4814,9 @@
 							</a>
 							<button
 								class="btn-secondary"
-								onclick="openWhatsAppPopup()">
+								onclick="openWhatsAppPopupOriginal()">
 								<i class="fab fa-whatsapp"></i> Free Quote
 							</button>
-						</div>
-						<div class="social-proof">
-							<i class="fas fa-check-circle"></i>
-							<span>Someone from Noida just booked 2 minutes ago</span>
 						</div>
 					</div>
 					<div class="hero-visual">
@@ -6162,10 +6323,84 @@
 			</div>
 		</footer>
 
+		<!-- Secure WhatsApp Modal -->
+		<div
+			id="whatsappModal"
+			class="modal-overlay"
+			style="display: none">
+			<div class="modal-content secure-form">
+				<button
+					class="modal-close"
+					onclick="closeWhatsAppPopup()">
+					×
+				</button>
+				<h3><i class="fab fa-whatsapp"></i> Get Free Quote</h3>
+
+				<div class="security-notice">
+					<i class="fas fa-shield-alt"></i>
+					Your information is secure and will only be used to provide you with a
+					quote.
+				</div>
+
+				<div class="form-group">
+					<label for="whatsappName">Full Name *</label>
+					<input
+						type="text"
+						id="whatsappName"
+						placeholder="Enter your full name"
+						maxlength="50"
+						required />
+					<span
+						class="error-message"
+						id="nameError"></span>
+				</div>
+
+				<div class="form-group">
+					<label for="whatsappPhone">Phone Number *</label>
+					<input
+						type="tel"
+						id="whatsappPhone"
+						placeholder="Enter your phone number"
+						maxlength="15"
+						required />
+					<span
+						class="error-message"
+						id="phoneError"></span>
+				</div>
+
+				<div class="form-group">
+					<label for="whatsappMessage">Message *</label>
+					<textarea
+						id="whatsappMessage"
+						placeholder="Describe your decoration requirements (minimum 10 characters)"
+						rows="4"
+						maxlength="500"
+						required></textarea>
+					<span
+						class="error-message"
+						id="messageError"></span>
+				</div>
+
+				<button
+					class="btn-primary"
+					onclick="submitWhatsAppForm()">
+					<i class="fab fa-whatsapp"></i> Send via WhatsApp
+				</button>
+			</div>
+		</div>
+
+		<!-- Floating Call Button -->
+		<a
+			href="tel:+917627057190"
+			class="call-float"
+			title="Call Now - Get 30% OFF">
+			<i class="fas fa-phone"></i>
+		</a>
+
 		<!-- Floating WhatsApp Button -->
 		<button
 			class="whatsapp-float"
-			onclick="openWhatsAppPopup()">
+			onclick="openWhatsAppPopupOriginal()">
 			<i class="fab fa-whatsapp"></i>
 		</button>
 
@@ -6181,7 +6416,7 @@
 					</div>
 					<button
 						class="whatsapp-popup-close"
-						onclick="closeWhatsAppPopup()">
+						onclick="closeWhatsAppPopupOriginal()">
 						<i class="fas fa-times"></i>
 					</button>
 				</div>
@@ -6315,6 +6550,327 @@
 		</div>
 
 		<script>
+			// Security utility functions
+			function sanitizeInput(input) {
+				if (typeof input !== "string") return "";
+				return input.replace(/[<>\"'&]/g, function (match) {
+					const escape = {
+						"<": "&lt;",
+						">": "&gt;",
+						'"': "&quot;",
+						"'": "&#x27;",
+						"&": "&amp;",
+					};
+					return escape[match];
+				});
+			}
+
+			function validateEmail(email) {
+				const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+				return emailRegex.test(email);
+			}
+
+			function validatePhone(phone) {
+				const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+				return phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ""));
+			}
+
+			function validateName(name) {
+				return (
+					name.length >= 2 && name.length <= 50 && /^[a-zA-Z\s]+$/.test(name)
+				);
+			}
+
+			function preventXSS(element) {
+				if (element.textContent) {
+					element.textContent = sanitizeInput(element.textContent);
+				}
+				if (element.value) {
+					element.value = sanitizeInput(element.value);
+				}
+			}
+
+			// Rate limiting for form submissions
+			const submissionAttempts = new Map();
+			const MAX_ATTEMPTS = 5;
+			const ATTEMPT_WINDOW = 60000; // 1 minute
+
+			function checkRateLimit(formId) {
+				const now = Date.now();
+				const attempts = submissionAttempts.get(formId) || [];
+
+				// Remove old attempts
+				const recentAttempts = attempts.filter(
+					(time) => now - time < ATTEMPT_WINDOW
+				);
+
+				if (recentAttempts.length >= MAX_ATTEMPTS) {
+					return false;
+				}
+
+				recentAttempts.push(now);
+				submissionAttempts.set(formId, recentAttempts);
+				return true;
+			}
+
+			// CSRF protection
+			function generateCSRFToken() {
+				return (
+					Math.random().toString(36).substring(2, 15) +
+					Math.random().toString(36).substring(2, 15)
+				);
+			}
+
+			const csrfToken = generateCSRFToken();
+
+			// Secure form handling
+			function secureFormSubmission(formElement, formId) {
+				if (!checkRateLimit(formId)) {
+					alert(
+						"Too many submission attempts. Please wait a minute before trying again."
+					);
+					return false;
+				}
+
+				// Sanitize all form inputs
+				const inputs = formElement.querySelectorAll("input, textarea, select");
+				inputs.forEach((input) => {
+					if (input.value) {
+						input.value = sanitizeInput(input.value);
+					}
+				});
+
+				// Add CSRF token to form
+				const csrfInput = document.createElement("input");
+				csrfInput.type = "hidden";
+				csrfInput.name = "csrf_token";
+				csrfInput.value = csrfToken;
+				formElement.appendChild(csrfInput);
+
+				return true;
+			}
+
+			// Secure WhatsApp popup with input validation
+			function openWhatsAppPopup() {
+				const modal = document.getElementById("whatsappModal");
+				modal.style.display = "block";
+
+				// Clear any previous inputs
+				const inputs = modal.querySelectorAll("input, textarea");
+				inputs.forEach((input) => {
+					input.value = "";
+					input.classList.remove("error");
+				});
+			}
+
+			function validateWhatsAppForm() {
+				const nameInput = document.getElementById("whatsappName");
+				const phoneInput = document.getElementById("whatsappPhone");
+				const messageInput = document.getElementById("whatsappMessage");
+
+				let isValid = true;
+
+				// Validate name
+				if (!validateName(nameInput.value.trim())) {
+					nameInput.classList.add("error");
+					isValid = false;
+				} else {
+					nameInput.classList.remove("error");
+				}
+
+				// Validate phone
+				if (!validatePhone(phoneInput.value.trim())) {
+					phoneInput.classList.add("error");
+					isValid = false;
+				} else {
+					phoneInput.classList.remove("error");
+				}
+
+				// Validate message
+				if (messageInput.value.trim().length < 10) {
+					messageInput.classList.add("error");
+					isValid = false;
+				} else {
+					messageInput.classList.remove("error");
+				}
+
+				return isValid;
+			}
+
+			function submitWhatsAppForm() {
+				if (!validateWhatsAppForm()) {
+					alert(
+						"Please fill all fields correctly. Name should be 2-50 characters, phone should be valid, and message should be at least 10 characters."
+					);
+					return;
+				}
+
+				const nameInput = document.getElementById("whatsappName");
+				const phoneInput = document.getElementById("whatsappPhone");
+				const messageInput = document.getElementById("whatsappMessage");
+
+				const name = sanitizeInput(nameInput.value.trim());
+				const phone = sanitizeInput(phoneInput.value.trim());
+				const message = sanitizeInput(messageInput.value.trim());
+
+				const whatsappMessage = `Hello! I'm ${name}. ${message}`;
+				const encodedMessage = encodeURIComponent(whatsappMessage);
+				const whatsappUrl = `https://wa.me/917627057190?text=${encodedMessage}`;
+
+				window.open(whatsappUrl, "_blank");
+				closeWhatsAppPopup();
+			}
+
+			function closeWhatsAppPopup() {
+				document.getElementById("whatsappModal").style.display = "none";
+			}
+
+			// Function for the original WhatsApp popup
+			function sendWhatsAppMessage(message) {
+				const encodedMessage = encodeURIComponent(message);
+				const whatsappUrl = `https://wa.me/917627057190?text=${encodedMessage}`;
+				window.open(whatsappUrl, "_blank");
+
+				// Close the popup
+				const popup = document.getElementById("whatsappPopupOverlay");
+				if (popup) {
+					popup.style.display = "none";
+				}
+			}
+
+			// Function to open the original WhatsApp popup
+			function openWhatsAppPopupOriginal() {
+				const popup = document.getElementById("whatsappPopupOverlay");
+				if (popup) {
+					popup.style.display = "block";
+				}
+			}
+
+			// Function to close the original WhatsApp popup
+			function closeWhatsAppPopupOriginal() {
+				const popup = document.getElementById("whatsappPopupOverlay");
+				if (popup) {
+					popup.style.display = "none";
+				}
+			}
+
+			// Add click outside to close functionality
+			document.addEventListener("DOMContentLoaded", function () {
+				const popup = document.getElementById("whatsappPopupOverlay");
+				if (popup) {
+					popup.addEventListener("click", function (e) {
+						if (e.target === popup) {
+							closeWhatsAppPopupOriginal();
+						}
+					});
+				}
+			});
+
+			// Prevent XSS in dynamic content
+			function secureInnerHTML(element, content) {
+				element.textContent = sanitizeInput(content);
+			}
+
+			// Secure event handlers
+			function addSecureEventListener(element, event, handler) {
+				element.addEventListener(event, function (e) {
+					// Prevent event bubbling for security
+					e.stopPropagation();
+					handler.call(this, e);
+				});
+			}
+
+			// Protection against common attacks
+			function initializeSecurityFeatures() {
+				// Prevent right-click context menu
+				document.addEventListener("contextmenu", function (e) {
+					e.preventDefault();
+					return false;
+				});
+
+				// Prevent text selection (optional - can be removed if needed)
+				document.addEventListener("selectstart", function (e) {
+					e.preventDefault();
+					return false;
+				});
+
+				// Prevent drag and drop
+				document.addEventListener("dragstart", function (e) {
+					e.preventDefault();
+					return false;
+				});
+
+				// Prevent F12, Ctrl+Shift+I, Ctrl+U
+				document.addEventListener("keydown", function (e) {
+					if (
+						e.key === "F12" ||
+						(e.ctrlKey && e.shiftKey && e.key === "I") ||
+						(e.ctrlKey && e.key === "u")
+					) {
+						e.preventDefault();
+						return false;
+					}
+				});
+
+				// Sanitize all user inputs on page load
+				const inputs = document.querySelectorAll("input, textarea, select");
+				inputs.forEach((input) => {
+					input.addEventListener("input", function () {
+						if (this.value) {
+							this.value = sanitizeInput(this.value);
+						}
+					});
+				});
+
+				// Add security headers dynamically
+				const meta = document.createElement("meta");
+				meta.httpEquiv = "X-Content-Type-Options";
+				meta.content = "nosniff";
+				document.head.appendChild(meta);
+			}
+
+			// Initialize security features when DOM is loaded
+			document.addEventListener("DOMContentLoaded", function () {
+				initializeSecurityFeatures();
+			});
+
+			// Secure image loading
+			function secureImageLoad(imgElement) {
+				imgElement.addEventListener("error", function () {
+					this.style.display = "none";
+				});
+
+				imgElement.addEventListener("load", function () {
+					// Verify image dimensions and type if needed
+					if (this.naturalWidth === 0 || this.naturalHeight === 0) {
+						this.style.display = "none";
+					}
+				});
+			}
+
+			// Secure external link handling
+			function secureExternalLink(url) {
+				// Validate URL
+				try {
+					const urlObj = new URL(url);
+					if (urlObj.protocol === "https:" || urlObj.protocol === "http:") {
+						return url;
+					}
+				} catch (e) {
+					return "#";
+				}
+				return "#";
+			}
+
+			// Add secure attributes to all external links
+			function secureExternalLinks() {
+				const links = document.querySelectorAll('a[href^="http"]');
+				links.forEach((link) => {
+					link.setAttribute("rel", "noopener noreferrer");
+					link.setAttribute("target", "_blank");
+				});
+			}
+
 			// Countdown Timer
 			function updateCountdown() {
 				const targetDate = new Date();
